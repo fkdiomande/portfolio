@@ -18,7 +18,6 @@ Create a git commit following the Conventional Commits specification (v1.0.0-bet
 <optional body>
 
 <optional footer>
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 5. Create the commit using a HEREDOC to preserve formatting:
@@ -43,4 +42,4 @@ EOF
 - Do NOT commit files that contain secrets
 - Do NOT use `--no-verify` or skip hooks
 - If a pre-commit hook fails, fix the issue and create a NEW commit (do NOT amend)
-- Always include the `Co-Authored-By` line in the footer
+- Do NOT include a `Co-Authored-By` line
