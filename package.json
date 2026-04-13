@@ -15,6 +15,7 @@
     "fmt": "bunx biome check --write"
   },
   "dependencies": {
+    "@fontsource-variable/roboto": "^5.2.10",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
     "tailwindcss": "^4.2.2"
