@@ -9,9 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "bun install && bun run build && bun run lint && bun run test",
+    "fmt": "bunx biome check --write"
   },
   "dependencies": {
     "astro": "^6.1.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.11"
   }
 }
