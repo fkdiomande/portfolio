@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { VariantProps } from "class-variance-authority";
+import { buttonVariants } from "./button-variants";
+
+interface Props
+	extends Omit<HTMLAttributes<"a">, "type">,
+		HTMLAttributes<"button">,
+		VariantProps<typeof buttonVariants> {}
+
+const { class: className, variant = "default", size = "sm", href, ...props } = Astro.props;
+const classes = buttonVariants({ variant, size, className });
+const Tag = href ? "a" : "button";
+---
+
+<Tag data-slot="button" class={classes} href={href} {...props}>
+	<slot />
+</Tag>

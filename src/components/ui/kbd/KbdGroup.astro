@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+
+interface Props extends HTMLAttributes<"kbd"> {}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<kbd data-slot="kbd-group" class={cn("gap-1 inline-flex items-center", className)} {...rest}>
+  <slot />
+</kbd>

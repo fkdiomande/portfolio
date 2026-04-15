@@ -1,0 +1,9 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"blockquote"> {}
+const { class: className, ...props } = Astro.props;
+---
+
+<blockquote class:list={["mt-6 border-l-2 pl-6 italic", className]} {...props}>
+	<slot />
+</blockquote>

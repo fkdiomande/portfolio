@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+
+interface Props extends HTMLAttributes<"div"> {
+  size?: "md" | "sm" | "lg" | "xl";
+}
+
+const { size = "md", class: className, ...rest } = Astro.props;
+---
+
+<div
+  data-slot="avatar"
+  data-size={size}
+  class={cn(
+    "size-6 2xl:size-8 rounded-full after:rounded-full data-[size=lg]:size-8 2xl:data-[size=lg]:size-10 data-[size=xl]:size-20 2xl:data-[size=xl]:size-28 data-[size=sm]:size-5 2xl:data-[size=sm]:size-6 after:border-border group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:mix-blend-darken",
+    className,
+  )}
+  {...rest}
+>
+  <slot />
+</div>

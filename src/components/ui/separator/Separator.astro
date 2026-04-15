@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+
+interface Props extends HTMLAttributes<"div"> {
+  orientation?: "horizontal" | "vertical";
+}
+
+const { orientation = "horizontal", class: className, ...rest } = Astro.props;
+---
+
+<div
+  role="separator"
+  data-slot="separator"
+  data-orientation={orientation}
+  class={cn(
+    "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px data-[orientation=vertical]:self-stretch",
+    className,
+  )}
+  {...rest}
+/>

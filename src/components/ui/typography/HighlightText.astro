@@ -1,0 +1,37 @@
+---
+interface Props {
+	text: string;
+	query?: string;
+}
+
+const { text, query } = Astro.props;
+
+const shouldHighlight = query && query.trim() !== "";
+const parts: { text: string; highlighted: boolean }[] = [];
+
+if (shouldHighlight) {
+	const trimmed = query.trim();
+	const escaped = trimmed.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	const segments = text.split(new RegExp(`(${escaped})`, "gi"));
+	for (const segment of segments) {
+		parts.push({
+			text: segment,
+			highlighted: segment.toLowerCase() === trimmed.toLowerCase(),
+		});
+	}
+}
+---
+
+{
+	shouldHighlight ? (
+		parts.map((part) =>
+			part.highlighted ? (
+				<mark class="bg-warning-200 dark:bg-warning-800 rounded px-0">{part.text}</mark>
+			) : (
+				part.text
+			),
+		)
+	) : (
+		text
+	)
+}

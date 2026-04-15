@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  size?: "default" | "sm";
+  hoverable?: boolean;
+}
+
+const { class: className, size = "default", hoverable = false, ...props } = Astro.props;
+---
+
+<div
+	data-slot="card"
+	data-size={size}
+	class:list={[
+		"bg-card text-card-foreground gap-3 2xl:gap-4 overflow-hidden rounded p-3 2xl:p-4 text-xs 2xl:text-sm has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 2xl:data-[size=sm]:gap-4 2xl:data-[size=sm]:py-4 group/card flex flex-col ring-[0.2px] ring-card-ring",
+		hoverable && "ring-[0.4px] hover:ring-ring-alt cursor-pointer",
+		className,
+	]}
+	{...props}
+>
+	<slot />
+</div>

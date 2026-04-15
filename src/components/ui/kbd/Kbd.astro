@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+
+interface Props extends HTMLAttributes<"kbd"> {}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<kbd
+  data-slot="kbd"
+  class={cn(
+    "bg-muted text-muted-foreground in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 h-4 2xl:h-5 w-fit min-w-4 2xl:min-w-5 gap-0.5 2xl:gap-1 rounded-sm px-0.5 2xl:px-1 font-sans text-3xs 2xl:text-xs font-medium [&_svg:not([class*='size-'])]:size-2.5 2xl:[&_svg:not([class*='size-'])]:size-3 pointer-events-none inline-flex items-center justify-center select-none",
+    className,
+  )}
+  {...rest}
+>
+  <slot />
+</kbd>
