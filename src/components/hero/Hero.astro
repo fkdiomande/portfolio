@@ -28,6 +28,16 @@ import redisIcon from "@/assets/tech/expertise/redis.svg";
 import tailwindIcon from "@/assets/tech/expertise/tailwindcss.svg";
 import terraformIcon from "@/assets/tech/expertise/terraform.svg";
 import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
+import Avatar from "@/components/ui/avatar/Avatar.astro";
+import AvatarImage from "@/components/ui/avatar/AvatarImage.astro";
+import AvatarFallback from "@/components/ui/avatar/AvatarFallback.astro";
+import Badge from "@/components/ui/badge/Badge.astro";
+import Button from "@/components/ui/button/Button.astro";
+import H1 from "@/components/ui/typography/H1.astro";
+import Lead from "@/components/ui/typography/Lead.astro";
+import Muted from "@/components/ui/typography/Muted.astro";
+import Small from "@/components/ui/typography/Small.astro";
+import Separator from "@/components/ui/separator/Separator.astro";
 
 const techStack = [
   { icon: typescriptIcon, name: "TypeScript" },
@@ -79,79 +89,69 @@ const socials = [
 
 <section data-slot="hero" class="flex flex-col items-center gap-10 py-16 px-6 max-w-3xl mx-auto">
   <div class="flex flex-col items-center gap-5">
-    <div class="size-32 rounded-full overflow-hidden ring-3 ring-primary/20 ring-offset-2 ring-offset-background">
-      <Image
-        src={profileImage}
-        alt="Franck Diomande"
-        width={256}
-        height={256}
-        class="size-full object-cover"
-      />
-    </div>
+    <Avatar size="xl" class="ring-3 ring-primary/20 ring-offset-2 ring-offset-background">
+      <AvatarImage src={profileImage.src} alt="Franck Diomande" />
+      <AvatarFallback>FD</AvatarFallback>
+    </Avatar>
 
     <div class="text-center space-y-2">
-      <h1 class="text-3xl font-bold text-foreground tracking-tight">
-        Franck Diomande
-      </h1>
-      <p class="text-lg font-medium text-secondary">
-        Fullstack Web Developer
-      </p>
-      <p class="text-sm text-muted-foreground max-w-md">
+      <H1>Franck Diomande</H1>
+      <Lead class="font-medium">Fullstack Web Developer</Lead>
+      <Muted class="max-w-md">
         Taking ideas to production. I design, build, and ship end-to-end web applications with modern tools and best practices.
-      </p>
+      </Muted>
     </div>
 
     <div class="flex gap-3">
       {socials.map(({ icon, name, href }) => (
-        <a
+        <Button
           href={href}
+          variant="outline"
+          size="icon-sm"
           target="_blank"
           rel="noopener noreferrer"
           aria-label={name}
-          class="size-9 flex items-center justify-center rounded-full border border-border hover:bg-accent transition-colors"
         >
           <Image src={icon} alt={name} width={18} height={18} />
-        </a>
+        </Button>
       ))}
     </div>
   </div>
 
+  <Separator />
+
   <div class="w-full space-y-3">
-    <h2 class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-      Tech Stack
-    </h2>
+    <Small class="uppercase tracking-wide text-muted-foreground">Tech Stack</Small>
     <div class="flex flex-wrap gap-2">
       {techStack.map(({ icon, name }) => (
-        <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-border bg-card text-xs font-medium text-card-foreground hover:bg-accent transition-colors">
+        <Badge variant="outline">
           <Image src={icon} alt={name} width={16} height={16} />
           <span>{name}</span>
-        </div>
+        </Badge>
       ))}
     </div>
   </div>
 
   <div class="w-full space-y-3">
-    <h2 class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-      Experience
-    </h2>
+    <Small class="uppercase tracking-wide text-muted-foreground">Experience</Small>
     <div class="flex flex-wrap gap-3 items-center">
       {companies.map(({ logo, name }) => (
-        <div class="size-10 rounded-md border border-border bg-card p-1.5 flex items-center justify-center hover:bg-accent transition-colors" title={name}>
-          <Image src={logo} alt={name} width={28} height={28} class="object-contain size-full" />
-        </div>
+        <Avatar size="lg" class="rounded-md after:rounded-md" title={name}>
+          <AvatarImage src={typeof logo === "string" ? logo : logo.src} alt={name} class="rounded-md object-contain p-1" />
+          <AvatarFallback class="rounded-md">{name.slice(0, 2)}</AvatarFallback>
+        </Avatar>
       ))}
     </div>
   </div>
 
   <div class="w-full space-y-3">
-    <h2 class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-      Education
-    </h2>
+    <Small class="uppercase tracking-wide text-muted-foreground">Education</Small>
     <div class="flex flex-wrap gap-3 items-center">
       {schools.map(({ logo, name }) => (
-        <div class="size-10 rounded-md border border-border bg-card p-1.5 flex items-center justify-center hover:bg-accent transition-colors" title={name}>
-          <Image src={logo} alt={name} width={28} height={28} class="object-contain size-full" />
-        </div>
+        <Avatar size="lg" class="rounded-md after:rounded-md" title={name}>
+          <AvatarImage src={typeof logo === "string" ? logo : logo.src} alt={name} class="rounded-md object-contain p-1" />
+          <AvatarFallback class="rounded-md">{name.slice(0, 2)}</AvatarFallback>
+        </Avatar>
       ))}
     </div>
   </div>
