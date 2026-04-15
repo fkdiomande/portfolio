@@ -29,30 +29,49 @@ import tailwindIcon from "@/assets/tech/expertise/tailwindcss.svg";
 import terraformIcon from "@/assets/tech/expertise/terraform.svg";
 import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
 import Avatar from "@/components/ui/avatar/Avatar.astro";
-import AvatarImage from "@/components/ui/avatar/AvatarImage.astro";
 import AvatarFallback from "@/components/ui/avatar/AvatarFallback.astro";
-import Badge from "@/components/ui/badge/Badge.astro";
+import AvatarImage from "@/components/ui/avatar/AvatarImage.astro";
 import Button from "@/components/ui/button/Button.astro";
 import H1 from "@/components/ui/typography/H1.astro";
+import Large from "@/components/ui/typography/Large.astro";
 import Lead from "@/components/ui/typography/Lead.astro";
 import Muted from "@/components/ui/typography/Muted.astro";
 import Small from "@/components/ui/typography/Small.astro";
-import Separator from "@/components/ui/separator/Separator.astro";
 
-const techStack = [
-  { icon: typescriptIcon, name: "TypeScript" },
-  { icon: reactIcon, name: "React" },
-  { icon: nodeIcon, name: "Node.js" },
-  { icon: nestIcon, name: "NestJS" },
-  { icon: pythonIcon, name: "Python" },
-  { icon: fastApiIcon, name: "FastAPI" },
-  { icon: postgresIcon, name: "PostgreSQL" },
-  { icon: redisIcon, name: "Redis" },
-  { icon: dockerIcon, name: "Docker" },
-  { icon: awsIcon, name: "AWS" },
-  { icon: terraformIcon, name: "Terraform" },
-  { icon: tailwindIcon, name: "Tailwind CSS" },
-  { icon: rabbitMqIcon, name: "RabbitMQ" },
+const techCategories = [
+  {
+    label: "Frontend",
+    icons: [
+      { icon: typescriptIcon, name: "TypeScript" },
+      { icon: reactIcon, name: "React" },
+      { icon: tailwindIcon, name: "Tailwind CSS" },
+    ],
+  },
+  {
+    label: "Backend",
+    icons: [
+      { icon: nodeIcon, name: "Node.js" },
+      { icon: nestIcon, name: "NestJS" },
+      { icon: pythonIcon, name: "Python" },
+      { icon: fastApiIcon, name: "FastAPI" },
+    ],
+  },
+  {
+    label: "Databases",
+    icons: [
+      { icon: postgresIcon, name: "PostgreSQL" },
+      { icon: redisIcon, name: "Redis" },
+      { icon: rabbitMqIcon, name: "RabbitMQ" },
+    ],
+  },
+  {
+    label: "DevOps",
+    icons: [
+      { icon: dockerIcon, name: "Docker" },
+      { icon: awsIcon, name: "AWS" },
+      { icon: terraformIcon, name: "Terraform" },
+    ],
+  },
 ];
 
 const companies = [
@@ -73,86 +92,283 @@ const schools = [
 
 const socials = [
   { icon: githubIcon, name: "GitHub", href: "https://github.com/ooneex" },
-  {
-    icon: linkedinIcon,
-    name: "LinkedIn",
-    href: "https://linkedin.com/in/franck-diomande",
-  },
-  {
-    icon: instagramIcon,
-    name: "Instagram",
-    href: "https://instagram.com/fkdiomande",
-  },
+  { icon: linkedinIcon, name: "LinkedIn", href: "https://linkedin.com/in/franck-diomande" },
+  { icon: instagramIcon, name: "Instagram", href: "https://instagram.com/fkdiomande" },
   { icon: emailIcon, name: "Email", href: "mailto:franck@ooneex.com" },
 ];
 ---
 
-<section data-slot="hero" class="flex flex-col items-center gap-10 py-16 px-6 max-w-3xl mx-auto">
-  <div class="flex flex-col items-center gap-5">
-    <Avatar size="xl" class="ring-3 ring-primary/20 ring-offset-2 ring-offset-background">
-      <AvatarImage src={profileImage.src} alt="Franck Diomande" />
-      <AvatarFallback>FD</AvatarFallback>
-    </Avatar>
-
-    <div class="text-center space-y-2">
-      <H1>Franck Diomande</H1>
-      <Lead class="font-medium">Fullstack Web Developer</Lead>
-      <Muted class="max-w-md">
-        Taking ideas to production. I design, build, and ship end-to-end web applications with modern tools and best practices.
-      </Muted>
-    </div>
-
-    <div class="flex gap-3">
-      {socials.map(({ icon, name, href }) => (
-        <Button
-          href={href}
-          variant="outline"
-          size="icon-sm"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={name}
-        >
-          <Image src={icon} alt={name} width={18} height={18} />
-        </Button>
-      ))}
-    </div>
+<section data-slot="hero" class="hero-section relative min-h-screen overflow-hidden">
+  <!-- Animated gradient background -->
+  <div class="hero-bg absolute inset-0 -z-10">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
-  <Separator />
+  <div class="relative z-10 mx-auto max-w-6xl px-6 pt-16 pb-12 flex flex-col gap-16">
+    <!-- Main hero content -->
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <!-- Left: Text content -->
+      <div class="hero-left flex-1 flex flex-col gap-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 self-center lg:self-start">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
+          </span>
+          <Small class="tracking-wider uppercase text-muted-foreground">Available for work</Small>
+        </div>
 
-  <div class="w-full space-y-3">
-    <Small class="uppercase tracking-wide text-muted-foreground">Tech Stack</Small>
-    <div class="flex flex-wrap gap-2">
-      {techStack.map(({ icon, name }) => (
-        <Badge variant="outline">
-          <Image src={icon} alt={name} width={16} height={16} />
-          <span>{name}</span>
-        </Badge>
+        <div>
+          <H1 class="hero-name text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-none">
+            <span class="block">Franck</span>
+            <span class="block hero-gradient-text uppercase">Diomande</span>
+          </H1>
+        </div>
+
+        <Large class="text-lg sm:text-xl text-foreground/80">
+          Fullstack Web Developer
+        </Large>
+
+        <Lead class="text-sm sm:text-base max-w-md mx-auto lg:mx-0 leading-relaxed">
+          Taking ideas to production. I design, build, and ship end-to-end web applications with modern tools and best practices.
+        </Lead>
+
+        <div class="flex gap-3 justify-center lg:justify-start">
+          <Button href="mailto:franck@ooneex.com" size="xl">
+            Get in touch
+          </Button>
+          <Button href="/resume" variant="outline" size="xl">
+            View Resume
+          </Button>
+        </div>
+
+        <div class="flex gap-2 justify-center lg:justify-start">
+          {socials.map(({ icon, name, href }) => (
+            <Button
+              href={href}
+              variant="ghost"
+              size="icon-sm"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={name}
+            >
+              <Image src={icon} alt={name} width={18} height={18} />
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Avatar -->
+      <div class="hero-right relative shrink-0">
+        <div class="relative">
+          <!-- Glow ring behind avatar -->
+          <div class="absolute inset-0 rounded-full bg-linear-to-br from-primary/30 via-secondary/20 to-primary/30 blur-2xl animate-pulse"></div>
+
+          <!-- Avatar -->
+          <div class="relative flex items-center justify-center">
+            <div class="avatar-ring relative rounded-full p-1">
+              <Avatar size="xl" class="size-44! sm:size-48! lg:size-56! ring-2 ring-white/20">
+                <AvatarImage src={profileImage.src} alt="Franck Diomande" />
+              </Avatar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech stack -->
+    <div class="tech-stack flex flex-wrap justify-center gap-x-8 gap-y-5">
+      {techCategories.map(({ label, icons }) => (
+        <div class="flex flex-col items-start gap-2">
+          <Muted class="text-2xs font-semibold tracking-widest opacity-60">{label}</Muted>
+          <div class="flex items-center -space-x-2">
+            {icons.map(({ icon, name }) => (
+              <div class="tech-icon group relative size-10 rounded-full border-2 border-background bg-card flex items-center justify-center transition-all duration-300 hover:z-10 hover:scale-125 hover:-translate-y-1" title={name}>
+                <Image src={icon} alt={name} width={20} height={20} />
+              </div>
+            ))}
+          </div>
+        </div>
       ))}
     </div>
-  </div>
 
-  <div class="w-full space-y-3">
-    <Small class="uppercase tracking-wide text-muted-foreground">Experience</Small>
-    <div class="flex flex-wrap gap-3 items-center">
-      {companies.map(({ logo, name }) => (
-        <Avatar size="lg" class="rounded-md after:rounded-md" title={name}>
-          <AvatarImage src={typeof logo === "string" ? logo : logo.src} alt={name} class="rounded-md object-contain p-1" />
-          <AvatarFallback class="rounded-md">{name.slice(0, 2)}</AvatarFallback>
-        </Avatar>
-      ))}
-    </div>
-  </div>
+    <!-- Bento grid: Experience & Education -->
+    <div class="bento-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Experience card -->
+      <div class="glass-card rounded-2xl p-6 space-y-4">
+        <div class="flex items-center gap-2">
+          <div class="h-1 w-6 rounded-full bg-linear-to-r from-primary to-secondary"></div>
+          <Small class="uppercase tracking-wider text-muted-foreground">Experience</Small>
+        </div>
+        <div class="flex flex-wrap gap-3 items-center">
+          {companies.map(({ logo, name }) => (
+            <div class="group relative" title={name}>
+              <Avatar size="xl" class="rounded-xl after:rounded-xl transition-transform duration-300 group-hover:scale-110">
+                <AvatarImage
+                  src={typeof logo === "string" ? logo : logo.src}
+                  alt={name}
+                  class="rounded-xl object-contain p-1.5"
+                />
+                <AvatarFallback class="rounded-xl text-2xs">{name.slice(0, 2)}</AvatarFallback>
+              </Avatar>
+            </div>
+          ))}
+        </div>
+      </div>
 
-  <div class="w-full space-y-3">
-    <Small class="uppercase tracking-wide text-muted-foreground">Education</Small>
-    <div class="flex flex-wrap gap-3 items-center">
-      {schools.map(({ logo, name }) => (
-        <Avatar size="lg" class="rounded-md after:rounded-md" title={name}>
-          <AvatarImage src={typeof logo === "string" ? logo : logo.src} alt={name} class="rounded-md object-contain p-1" />
-          <AvatarFallback class="rounded-md">{name.slice(0, 2)}</AvatarFallback>
-        </Avatar>
-      ))}
+      <!-- Education card -->
+      <div class="glass-card rounded-2xl p-6 space-y-4">
+        <div class="flex items-center gap-2">
+          <div class="h-1 w-6 rounded-full bg-linear-to-r from-secondary to-primary"></div>
+          <Small class="uppercase tracking-wider text-muted-foreground">Education</Small>
+        </div>
+        <div class="flex flex-wrap gap-3 items-center">
+          {schools.map(({ logo, name }) => (
+            <div class="group relative" title={name}>
+              <Avatar size="xl" class="rounded-xl after:rounded-xl transition-transform duration-300 group-hover:scale-110">
+                <AvatarImage
+                  src={typeof logo === "string" ? logo : logo.src}
+                  alt={name}
+                  class="rounded-xl object-contain p-1.5"
+                />
+                <AvatarFallback class="rounded-xl text-2xs">{name.slice(0, 2)}</AvatarFallback>
+              </Avatar>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .hero-bg {
+    background: var(--color-background);
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--color-primary-300);
+    top: -200px;
+    right: -100px;
+    animation-delay: 0s;
+  }
+
+  .orb-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--color-secondary-300);
+    bottom: -150px;
+    left: -100px;
+    animation-delay: -7s;
+  }
+
+  .orb-3 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-primary-400);
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+    animation-delay: -14s;
+    opacity: 0.2;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(30px, -40px) scale(1.05);
+    }
+    50% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+    75% {
+      transform: translate(40px, 30px) scale(1.02);
+    }
+  }
+
+  .hero-gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-500) 30%,
+      var(--color-secondary) 70%,
+      var(--color-secondary-400) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .avatar-ring {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 50%,
+      var(--color-primary) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+
+  .glass-card {
+    background: color-mix(in oklch, var(--color-card) 70%, transparent);
+    border: 1px solid color-mix(in oklch, var(--color-border) 50%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .tech-icon {
+    box-shadow: none;
+  }
+
+  /* Entrance animations */
+  .hero-left {
+    animation: fade-up 0.8s ease-out both;
+  }
+
+  .hero-right {
+    animation: fade-up 0.8s ease-out 0.2s both;
+  }
+
+  .tech-stack {
+    animation: fade-up 0.8s ease-out 0.4s both;
+  }
+
+  .bento-grid {
+    animation: fade-up 0.8s ease-out 0.6s both;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+</style>

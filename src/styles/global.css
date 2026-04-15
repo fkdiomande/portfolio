@@ -393,7 +393,7 @@
 
   body {
     font-size: 16px;      /* base */
-    @apply font-sans bg-background text-foreground tracking-normal overflow-hidden;
+    @apply font-sans bg-background text-foreground tracking-normal overflow-x-hidden;
   }
   html {
     @apply font-sans text-sm;
