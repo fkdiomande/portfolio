@@ -113,7 +113,6 @@ const socials = [
       <div class="hero-left flex-1 flex flex-col gap-6 text-center lg:text-left">
         <div class="inline-flex items-center gap-3 self-center lg:self-start">
           <span class="relative flex h-3 w-3">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-50"></span>
             <span class="relative inline-flex h-3 w-3 rounded-full hero-gradient-dot"></span>
           </span>
           <span class="text-2xl font-black tracking-tight hero-gradient-text">14+</span>
@@ -164,7 +163,7 @@ const socials = [
       <div class="hero-right relative shrink-0">
         <div class="relative">
           <!-- Glow ring behind avatar -->
-          <div class="absolute inset-0 rounded-full bg-linear-to-br from-primary/30 via-secondary/20 to-primary/30 blur-2xl animate-pulse"></div>
+          <div class="absolute inset-0 rounded-full bg-linear-to-br from-primary/30 via-secondary/20 to-primary/30 blur-2xl"></div>
 
           <!-- Avatar -->
           <div class="relative flex items-center justify-center">
@@ -278,7 +277,6 @@ const socials = [
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.4;
-    animation: float 20s ease-in-out infinite;
   }
 
   .orb-1 {
@@ -287,7 +285,6 @@ const socials = [
     background: var(--color-primary-300);
     top: -200px;
     right: -100px;
-    animation-delay: 0s;
   }
 
   .orb-2 {
@@ -296,7 +293,6 @@ const socials = [
     background: var(--color-secondary-300);
     bottom: -150px;
     left: -100px;
-    animation-delay: -7s;
   }
 
   .orb-3 {
@@ -305,23 +301,7 @@ const socials = [
     background: var(--color-primary-400);
     top: calc(50% - 200px);
     left: calc(50% - 200px);
-    animation-delay: -14s;
     opacity: 0.2;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(30px, -40px) scale(1.05);
-    }
-    50% {
-      transform: translate(-20px, 20px) scale(0.95);
-    }
-    75% {
-      transform: translate(40px, 30px) scale(1.02);
-    }
   }
 
   .hero-gradient-text {
@@ -332,20 +312,9 @@ const socials = [
       var(--color-secondary) 70%,
       var(--color-secondary-400) 100%
     );
-    background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient-shift 6s ease-in-out infinite;
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
   }
 
   .hero-gradient-dot {
@@ -363,8 +332,6 @@ const socials = [
       var(--color-secondary) 50%,
       var(--color-primary) 100%
     );
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease-in-out infinite;
   }
 
   .glass-card {
@@ -377,23 +344,6 @@ const socials = [
     box-shadow: none;
   }
 
-  /* Entrance animations */
-  .hero-left {
-    animation: fade-up 0.8s ease-out both;
-  }
-
-  .hero-right {
-    animation: fade-up 0.8s ease-out 0.2s both;
-  }
-
-  .tech-stack {
-    animation: fade-up 0.8s ease-out 0.4s both;
-  }
-
-  .card-fan-section {
-    animation: fade-up 0.8s ease-out 0.6s both;
-  }
-
   .fan-card {
     transform: translateX(-50%) rotate(var(--fan-rotate)) translateY(calc(-1 * var(--fan-y)));
     transition: transform 0.3s ease, z-index 0s;
@@ -403,16 +353,4 @@ const socials = [
     transform: translateX(-50%) rotate(0deg) translateY(-30px);
     z-index: 50 !important;
   }
-
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
 </style>
