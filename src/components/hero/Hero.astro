@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import airLiquide from "@/assets/companies/air-liquide.jpg";
+import airLiquide from "@/assets/companies/air-liquide.svg";
 import babbler from "@/assets/companies/babbler.png";
-import deltaRm from "@/assets/companies/delta-rm.webp";
-import mata from "@/assets/companies/mata.png";
-import metaLogo from "@/assets/companies/meta.png";
+import deltaRm from "@/assets/companies/delta-rm.png";
+import mata from "@/assets/companies/mata.svg";
+import metaLogo from "@/assets/companies/meta.svg";
 import ooneex from "@/assets/companies/ooneex.svg";
 import wiztrust from "@/assets/companies/wiztrust.png";
 import profileImage from "@/assets/franck-diomande.jpeg";
@@ -77,22 +77,30 @@ const experiences = [
     logo: metaLogo,
     name: "Meta",
     field: "Social Media",
-    description:
-      "Operates Facebook, Instagram, and WhatsApp — social platforms used by billions worldwide.",
+    description: "Operates Facebook, Instagram, and WhatsApp — social platforms used by billions worldwide.",
+    url: "https://about.meta.com",
+    logoClass: "h-5",
   },
   {
     logo: airLiquide,
     name: "Air Liquide",
     field: "Industrial Gases",
-    description:
-      "World leader in gases, technologies, and services for industry and healthcare in 70+ countries.",
+    description: "World leader in gases, technologies, and services for industry and healthcare in 70+ countries.",
+    url: "https://www.airliquide.com",
+  },
+  {
+    logo: mata,
+    name: "Mata Capital",
+    field: "Real Estate",
+    description: "Real estate investment manager with over €1.5bn in assets under management.",
+    url: "https://www.matacapital.com",
   },
   {
     logo: ooneex,
     name: "Ooneex",
     field: "EdTech",
-    description:
-      "Medical study platform that turns lecture notes into smart, exam-ready flashcards.",
+    description: "Medical study platform that turns lecture notes into smart, exam-ready flashcards.",
+    url: "https://www.ooneex.com",
   },
   {
     logo: wiztrust,
@@ -100,27 +108,21 @@ const experiences = [
     field: "Corporate Comms",
     description:
       "PR platform that lets corporate communication teams certify and distribute content on the blockchain.",
-  },
-  {
-    logo: babbler,
-    name: "Babbler",
-    field: "Media Relations",
-    description:
-      "Social network connecting brands with journalists and influencers for press relations.",
+    url: "https://www.wiztrust.com",
   },
   {
     logo: deltaRm,
     name: "Delta RM",
     field: "Risk Management",
-    description:
-      "SaaS for enterprise risk, incidents, insurance, and internal control management.",
+    description: "SaaS for enterprise risk, incidents, insurance, and internal control management.",
+    url: "https://en.deltarm.com",
   },
   {
-    logo: mata,
-    name: "Mata Capital",
-    field: "Real Estate",
-    description:
-      "Real estate investment manager with over €1.5bn in assets under management.",
+    logo: babbler,
+    name: "Babbler",
+    field: "Media Relations",
+    description: "Social network connecting brands with journalists and influencers for press relations.",
+    url: "https://heybabbler.com",
   },
 ];
 
@@ -232,19 +234,27 @@ const socials = [
     <div class="experience-stack flex flex-col gap-4">
       <Muted class="text-2xs font-semibold tracking-widest opacity-60 text-center">Companies I've worked with</Muted>
       <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {experiences.map(({ logo, name, field, description }) => (
-          <Card hoverable size="sm" class="experience-card gap-3">
-            <div class="flex items-start justify-between gap-3">
-              <div class="experience-logo size-12 rounded-md bg-background flex items-center justify-center shrink-0 ring-1 ring-border overflow-hidden">
-                <Image src={logo} alt={name} width={36} height={36} class="object-contain" />
+        {experiences.map(({ logo, name, field, description, url, logoClass }) => (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${name}`}
+            class="block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
+          >
+            <Card hoverable size="sm" class="experience-card gap-3 h-full">
+              <div class="flex items-start justify-between gap-3">
+                <div class:list={["experience-logo flex h-7 items-center shrink-0", logoClass]}>
+                  <Image src={logo} alt={name} class="h-full w-auto max-w-30 object-contain object-left" />
+                </div>
+                <Badge variant="secondary">{field}</Badge>
               </div>
-              <Badge variant="secondary">{field}</Badge>
-            </div>
-            <div class="flex flex-col gap-1">
-              <h3 class="text-sm font-semibold leading-tight">{name}</h3>
-              <p class="text-xs text-muted-foreground leading-relaxed">{description}</p>
-            </div>
-          </Card>
+              <div class="flex flex-col gap-1">
+                <h3 class="text-sm font-semibold leading-tight">{name}</h3>
+                <p class="text-xs text-muted-foreground leading-relaxed">{description}</p>
+              </div>
+            </Card>
+          </a>
         ))}
       </div>
     </div>
