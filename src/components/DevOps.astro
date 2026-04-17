@@ -73,7 +73,6 @@ const items = [
           {/* Step number */}
           <div class="pipeline-number">
             <span class="pipeline-number-text">{String(i + 1).padStart(2, "0")}</span>
-            <span class="pipeline-pulse" />
           </div>
 
           {/* Card */}
@@ -188,26 +187,7 @@ const items = [
     color: white;
   }
 
-  .pipeline-pulse {
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    border: 2px solid rgba(124, 58, 237, 0.3);
-    animation: pulse-ring 2s ease-out infinite;
-  }
-
-  @keyframes pulse-ring {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1.5);
-      opacity: 0;
-    }
-  }
-
-  /* Card */
+/* Card */
   .pipeline-card {
     width: 100%;
     background: var(--color-card);
@@ -277,12 +257,6 @@ const items = [
     height: 6px;
     border-radius: 50%;
     background: #22c55e;
-    animation: blink-dot 2s ease-in-out infinite;
-  }
-
-  @keyframes blink-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
   }
 
   .pipeline-name {
