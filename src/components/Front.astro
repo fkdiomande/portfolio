@@ -13,7 +13,6 @@ import tailwindIcon from "@/assets/tech/expertise/tailwindcss.svg";
 import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
 import viteIcon from "@/assets/tech/expertise/vite.svg";
 
-
 const description =
   "Proficient Front-End Developer with a proven track record in crafting immersive user experiences. Extensive expertise in HTML, CSS, and JavaScript, adept at transforming design concepts into responsive, high-performing web applications. Skilled in optimizing UI/UX, ensuring seamless functionality across various platforms and browsers. Strong knowledge of frameworks and libraries, coupled with a passion for staying updated on emerging technologies, driving innovation in Front-End development.";
 
@@ -178,15 +177,14 @@ const categories = [
 
 <style>
   .editor-window {
-    background: #1e1e2e;
-    box-shadow:
-      0 25px 50px -12px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.05);
+    background: #eff1f5;
+    box-shadow: none;
+    border: 1px solid #ccd0da;
   }
 
   .editor-titlebar {
-    background: #181825;
-    border-bottom: 1px solid #313244;
+    background: #e6e9ef;
+    border-bottom: 1px solid #ccd0da;
   }
 
   .dot {
@@ -197,35 +195,35 @@ const categories = [
   }
 
   .dot-red {
-    background: #f38ba8;
+    background: #d20f39;
   }
 
   .dot-yellow {
-    background: #f9e2af;
+    background: #df8e1d;
   }
 
   .dot-green {
-    background: #a6e3a1;
+    background: #40a02b;
   }
 
   .editor-filename {
     font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
     font-size: 0.75rem;
-    color: #cdd6f4;
+    color: #4c4f69;
   }
 
   .editor-tab {
     font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
     font-size: 0.7rem;
-    color: #6c7086;
+    color: #9ca0b0;
     padding: 0.2rem 0.75rem;
     border-radius: 0.25rem;
     cursor: default;
   }
 
   .editor-tab-active {
-    color: #cdd6f4;
-    background: #1e1e2e;
+    color: #4c4f69;
+    background: #eff1f5;
   }
 
   .editor-body {
@@ -248,40 +246,40 @@ const categories = [
     min-width: 3.5rem;
     text-align: right;
     padding-right: 1.25rem;
-    color: #585b70;
+    color: #9ca0b0;
     user-select: none;
     font-size: 0.75rem;
   }
 
   .code-comment {
-    color: #6c7086;
+    color: #8c8fa1;
     font-style: italic;
   }
 
   .code-keyword {
-    color: #cba6f7;
+    color: #8839ef;
   }
 
   .code-variable {
-    color: #89b4fa;
+    color: #1e66f5;
   }
 
   .code-function {
-    color: #89dceb;
+    color: #179299;
   }
 
   .code-type {
-    color: #f9e2af;
+    color: #df8e1d;
   }
 
   .code-string {
-    color: #a6e3a1;
+    color: #40a02b;
     font-style: italic;
     font-size: 0.75rem;
   }
 
   .code-punctuation {
-    color: #6c7086;
+    color: #8c8fa1;
   }
 
   .code-indent {
@@ -300,17 +298,17 @@ const categories = [
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: #313244;
+    background: #e6e9ef;
     padding: 0.35rem 0.75rem;
     border-radius: 0.375rem;
-    border: 1px solid #45475a;
+    border: 1px solid #ccd0da;
     transition: all 0.2s ease;
     cursor: default;
   }
 
   .tech-module:hover {
-    background: #45475a;
-    border-color: #585b70;
+    background: #dce0e8;
+    border-color: #bcc0cc;
     transform: translateY(-1px);
   }
 
@@ -323,15 +321,15 @@ const categories = [
   }
 
   .tech-name {
-    color: #cdd6f4;
+    color: #4c4f69;
     font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
     font-size: 0.8rem;
     font-weight: 500;
   }
 
   .editor-statusbar {
-    background: var(--color-primary-800);
-    border-top: 1px solid #313244;
+    background: #e6e9ef;
+    border-top: 1px solid #ccd0da;
   }
 
   .status-item {
@@ -340,7 +338,7 @@ const categories = [
     gap: 0.35rem;
     font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
     font-size: 0.65rem;
-    color: #cdd6f4;
+    color: #6c6f85;
   }
 
   @media (max-width: 640px) {
