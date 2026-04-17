@@ -1,0 +1,154 @@
+---
+import { Image } from "astro:assets";
+import biomeIcon from "@/assets/tech/expertise/biome.svg";
+import bunIcon from "@/assets/tech/expertise/bun.svg";
+import cssIcon from "@/assets/tech/expertise/css.svg";
+import eslintIcon from "@/assets/tech/expertise/eslint.svg";
+import htmlIcon from "@/assets/tech/expertise/html.svg";
+import javascriptIcon from "@/assets/tech/expertise/javascript.svg";
+import jestIcon from "@/assets/tech/expertise/jest.svg";
+import npmIcon from "@/assets/tech/expertise/npm.svg";
+import reactIcon from "@/assets/tech/expertise/react.svg";
+import tailwindIcon from "@/assets/tech/expertise/tailwindcss.svg";
+import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
+import viteIcon from "@/assets/tech/expertise/vite.svg";
+
+
+const description =
+  "Proficient Front-End Developer with a proven track record in crafting immersive user experiences. Extensive expertise in HTML, CSS, and JavaScript, adept at transforming design concepts into responsive, high-performing web applications. Skilled in optimizing UI/UX, ensuring seamless functionality across various platforms and browsers. Strong knowledge of frameworks and libraries, coupled with a passion for staying updated on emerging technologies, driving innovation in Front-End development.";
+
+const categories = [
+  {
+    label: "Languages",
+    icons: [
+      { icon: htmlIcon, name: "HTML" },
+      { icon: cssIcon, name: "CSS" },
+      { icon: javascriptIcon, name: "JavaScript" },
+      { icon: typescriptIcon, name: "TypeScript" },
+    ],
+  },
+  {
+    label: "Frameworks",
+    icons: [
+      { icon: reactIcon, name: "React" },
+      { icon: tailwindIcon, name: "Tailwindcss" },
+    ],
+  },
+  {
+    label: "Unit test",
+    icons: [
+      { icon: jestIcon, name: "Jest" },
+      { icon: bunIcon, name: "Bun test" },
+    ],
+  },
+  {
+    label: "Build tools",
+    icons: [
+      { icon: viteIcon, name: "Vite" },
+      { icon: bunIcon, name: "Bun" },
+    ],
+  },
+  {
+    label: "Others",
+    icons: [
+      { icon: npmIcon, name: "NPM" },
+      { icon: eslintIcon, name: "Eslint" },
+      { icon: biomeIcon, name: "Biome" },
+    ],
+  },
+] as const;
+---
+
+<section data-slot="front-end" class="front-section relative overflow-hidden py-20 sm:py-24">
+  <div class="relative z-10 mx-auto max-w-4xl px-6">
+    <!-- Header -->
+    <div class="front-header flex items-center gap-4 rounded-t-lg px-6 py-5">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="text-white"
+        aria-hidden="true"
+      >
+        <path d="m18 16 4-4-4-4" />
+        <path d="m6 8-4 4 4 4" />
+        <path d="m14.5 4-5 16" />
+      </svg>
+      <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">Front-End</h2>
+    </div>
+
+    <!-- Body -->
+    <div class="front-body rounded-b-lg bg-white px-8 py-10 sm:px-10 sm:py-12">
+      <!-- Intro -->
+      <p class="front-intro mb-4 text-sm font-semibold italic leading-relaxed">
+        Throughout my career, I've honed my expertise as a Front-End Developer, refining and perfecting my skill set in this domain.
+      </p>
+      <p class="front-description mb-10 text-base font-bold leading-relaxed">
+        {description}
+      </p>
+
+      <!-- Categories grid -->
+      <div class="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+        {
+          categories.map(({ label, icons }) => (
+            <div>
+              <h3 class="front-category-title text-xl sm:text-2xl font-black tracking-tight mb-1">
+                {label}
+              </h3>
+              <div class="front-category-line mb-5 h-1 w-full rounded-full" />
+              <div class="flex flex-wrap gap-5">
+                {icons.map(({ icon, name }) => (
+                  <div class="flex items-center gap-2">
+                    <Image src={icon} alt={name} width={28} height={28} />
+                    <span class="text-sm font-semibold">{name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .front-header {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-600) 100%
+    );
+  }
+
+  .front-body {
+    border: 1px solid var(--color-border);
+    border-top: none;
+  }
+
+  .front-intro {
+    color: var(--color-foreground);
+  }
+
+  .front-description {
+    color: var(--color-foreground);
+  }
+
+  .front-category-title {
+    color: var(--color-primary-600);
+  }
+
+  .front-category-line {
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-400) 0%,
+      var(--color-primary-200) 100%
+    );
+  }
+</style>

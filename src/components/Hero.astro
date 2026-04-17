@@ -8,15 +8,19 @@ import metaLogo from "@/assets/companies/meta.svg";
 import ooneex from "@/assets/companies/ooneex.svg";
 import wiztrust from "@/assets/companies/wiztrust.png";
 import profileImage from "@/assets/franck-diomande.jpeg";
-import emailIcon from "@/assets/social/email.svg";
 import githubIcon from "@/assets/social/github.svg";
-import instagramIcon from "@/assets/social/instagram.svg";
 import linkedinIcon from "@/assets/social/linkedin.svg";
 import awsIcon from "@/assets/tech/expertise/aws.svg";
+import cassandraIcon from "@/assets/tech/expertise/cassandra.svg";
 import dockerIcon from "@/assets/tech/expertise/docker.svg";
 import fastApiIcon from "@/assets/tech/expertise/fast-api.svg";
+import kubernetesIcon from "@/assets/tech/expertise/kubernetes.svg";
+import lancedbIcon from "@/assets/tech/expertise/lancedb.svg";
+import langchainIcon from "@/assets/tech/expertise/langchain.svg";
+import mongodbIcon from "@/assets/tech/expertise/mongodb.svg";
 import nestIcon from "@/assets/tech/expertise/nest.js.svg";
 import nodeIcon from "@/assets/tech/expertise/node.js.svg";
+import openrouterIcon from "@/assets/tech/expertise/openrouter.svg";
 import postgresIcon from "@/assets/tech/expertise/postgres.svg";
 import pythonIcon from "@/assets/tech/expertise/python.svg";
 import rabbitMqIcon from "@/assets/tech/expertise/rabbit-mq.svg";
@@ -58,6 +62,8 @@ const techCategories = [
     label: "Databases",
     icons: [
       { icon: postgresIcon, name: "PostgreSQL" },
+      { icon: mongodbIcon, name: "MongoDB" },
+      { icon: cassandraIcon, name: "Cassandra" },
       { icon: redisIcon, name: "Redis" },
       { icon: rabbitMqIcon, name: "RabbitMQ" },
     ],
@@ -66,8 +72,17 @@ const techCategories = [
     label: "DevOps",
     icons: [
       { icon: dockerIcon, name: "Docker" },
+      { icon: kubernetesIcon, name: "Kubernetes" },
       { icon: awsIcon, name: "AWS" },
       { icon: terraformIcon, name: "Terraform" },
+    ],
+  },
+  {
+    label: "AI & Agent",
+    icons: [
+      { icon: langchainIcon, name: "LangChain" },
+      { icon: lancedbIcon, name: "LanceDB" },
+      { icon: openrouterIcon, name: "OpenRouter" },
     ],
   },
 ];
@@ -219,8 +234,8 @@ const socials = [
           <Muted class="text-2xs font-semibold tracking-widest opacity-60">{label}</Muted>
           <div class="flex items-center -space-x-2">
             {icons.map(({ icon, name }) => (
-              <div class="tech-icon group relative size-10 rounded-full border-2 border-background bg-card flex items-center justify-center transition-all duration-300 hover:z-10 hover:scale-125 hover:-translate-y-1" title={name}>
-                <Image src={icon} alt={name} width={20} height={20} />
+              <div class="tech-icon group relative size-12 rounded-full border border-card-ring bg-card flex items-center justify-center transition-all duration-300 hover:z-10 hover:scale-125 hover:-translate-y-1" title={name}>
+                <Image src={icon} alt={name} width={24} height={24} />
               </div>
             ))}
           </div>
