@@ -1,0 +1,457 @@
+---
+import { Image } from "astro:assets";
+import apiIcon from "@/assets/tech/expertise/api.svg";
+import bunIcon from "@/assets/tech/expertise/bun.svg";
+import cassandraIcon from "@/assets/tech/expertise/cassandra.svg";
+import fastApiIcon from "@/assets/tech/expertise/fast-api.svg";
+import jestIcon from "@/assets/tech/expertise/jest.svg";
+import microservicesIcon from "@/assets/tech/expertise/microservices.svg";
+import mongodbIcon from "@/assets/tech/expertise/mongodb.svg";
+import nestIcon from "@/assets/tech/expertise/nest.js.svg";
+import nodeIcon from "@/assets/tech/expertise/node.js.svg";
+import postgresIcon from "@/assets/tech/expertise/postgres.svg";
+import pytestIcon from "@/assets/tech/expertise/pytest.svg";
+import pythonIcon from "@/assets/tech/expertise/python.svg";
+import rabbitMqIcon from "@/assets/tech/expertise/rabbit-mq.svg";
+import redisIcon from "@/assets/tech/expertise/redis.svg";
+import sqlIcon from "@/assets/tech/expertise/sql.svg";
+
+const description =
+  "My tenure in major corporations has provided me with invaluable expertise in resolving security concerns and crafting resilient applications. My expertise lies in the realm of Back-End Development, where I specialize in architecting and crafting the functional core of applications. Proficient in handling databases, server-side logic, and ensuring seamless data integration, my skills ensure robust, efficient, and secure back-end systems that power dynamic and high-performing applications.";
+
+const categories = [
+  {
+    label: "Languages",
+    icons: [
+      { icon: pythonIcon, name: "Python" },
+      { icon: nodeIcon, name: "Nodejs" },
+      { icon: sqlIcon, name: "SQL" },
+    ],
+  },
+  {
+    label: "Frameworks",
+    icons: [
+      { icon: nestIcon, name: "NestJS" },
+      { icon: fastApiIcon, name: "FastAPI" },
+    ],
+  },
+  {
+    label: "Unit test",
+    icons: [
+      { icon: jestIcon, name: "Jest" },
+      { icon: bunIcon, name: "Bun test" },
+      { icon: pytestIcon, name: "PyTest" },
+    ],
+  },
+  {
+    label: "Databases",
+    icons: [
+      { icon: redisIcon, name: "Redis" },
+      { icon: postgresIcon, name: "Postgres" },
+      { icon: mongodbIcon, name: "MongoDB" },
+      { icon: cassandraIcon, name: "Cassandra" },
+    ],
+  },
+  {
+    label: "Others",
+    icons: [
+      { icon: apiIcon, name: "APIs" },
+      { icon: microservicesIcon, name: "Microservices" },
+      { icon: rabbitMqIcon, name: "RabbitMQ" },
+    ],
+  },
+] as const;
+---
+
+<section data-slot="back-end" class="back-section relative overflow-hidden py-20 sm:py-24">
+  <!-- Circuit pattern background -->
+  <div class="circuit-bg absolute inset-0"></div>
+
+  <!-- Gradient orbs -->
+  <div class="back-orb back-orb-1"></div>
+  <div class="back-orb back-orb-2"></div>
+  <div class="back-orb back-orb-3"></div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <!-- Dashboard container -->
+    <div class="dashboard rounded-xl overflow-hidden">
+      <!-- Top nav bar -->
+      <div class="dash-nav flex items-center justify-between px-5 py-3">
+        <div class="flex items-center gap-3">
+          <!-- Server icon -->
+          <div class="dash-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="8" rx="2" />
+              <rect x="2" y="14" width="20" height="8" rx="2" />
+              <circle cx="6" cy="6" r="1" fill="currentColor" />
+              <circle cx="6" cy="18" r="1" fill="currentColor" />
+            </svg>
+          </div>
+          <span class="dash-brand">Back-End</span>
+          <span class="dash-separator"></span>
+          <span class="dash-breadcrumb">Skills Dashboard</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="dash-status">
+            <span class="status-pulse"></span>
+            All systems operational
+          </span>
+        </div>
+      </div>
+
+      <!-- Description panel -->
+      <div class="dash-body">
+        <div class="dash-description mx-5 mt-5 mb-6 rounded-lg p-4">
+          <div class="dash-desc-header flex items-center gap-2 mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+            <span>Overview</span>
+          </div>
+          <p class="dash-desc-text">{description}</p>
+        </div>
+
+        <!-- Category panels grid -->
+        <div class="dash-grid mx-5 mb-5">
+          {
+            categories.map(({ label, icons }) => (
+              <div class="dash-panel rounded-lg">
+                <div class="dash-panel-header flex items-center justify-between px-4 py-3">
+                  <span class="panel-title">{label}</span>
+                  <span class="panel-count">{icons.length}</span>
+                </div>
+                <div class="dash-panel-divider"></div>
+                <div class="dash-panel-body p-4">
+                  <div class="panel-tech-list">
+                    {icons.map(({ icon, name }) => (
+                      <div class="panel-tech-item">
+                        <div class="panel-tech-icon">
+                          <Image src={icon} alt={name} width={26} height={26} />
+                        </div>
+                        <span class="panel-tech-name">{name}</span>
+                        <span class="panel-tech-dot"></span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Footer bar -->
+      <div class="dash-footer flex items-center justify-between px-5 py-2">
+        <div class="flex items-center gap-4">
+          <span class="footer-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+            99.9% uptime
+          </span>
+          <span class="footer-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            Secure
+          </span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="footer-item">Node v22</span>
+          <span class="footer-item">Python 3.12</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Circuit board subtle pattern */
+  .circuit-bg {
+    background-color: transparent;
+    background-image:
+      radial-gradient(circle at 25px 25px, rgba(16, 185, 129, 0.035) 2px, transparent 0),
+      linear-gradient(rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px, 25px 25px, 25px 25px;
+  }
+
+  .back-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .back-orb-1 {
+    width: 500px;
+    height: 500px;
+    background: #10b981;
+    top: -150px;
+    right: -100px;
+  }
+
+  .back-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: #0ea5e9;
+    bottom: -120px;
+    left: -80px;
+  }
+
+  .back-orb-3 {
+    width: 250px;
+    height: 250px;
+    background: #8b5cf6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Dashboard shell */
+  .dashboard {
+    background: #0c1017;
+    border: 1px solid #1c2433;
+    box-shadow: none;
+  }
+
+  /* Nav bar */
+  .dash-nav {
+    background: #0f151d;
+    border-bottom: 1px solid #1c2433;
+  }
+
+  .dash-logo {
+    color: #10b981;
+    display: flex;
+    align-items: center;
+  }
+
+  .dash-brand {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    letter-spacing: -0.01em;
+  }
+
+  .dash-separator {
+    width: 1px;
+    height: 16px;
+    background: #2d3748;
+  }
+
+  .dash-breadcrumb {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+
+  .dash-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.65rem;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.08);
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+  }
+
+  .status-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
+  }
+
+  /* Body */
+  .dash-body {
+    background: #0c1017;
+  }
+
+  /* Description */
+  .dash-description {
+    background: rgba(16, 185, 129, 0.04);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+  }
+
+  .dash-desc-header {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #10b981;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .dash-desc-text {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #94a3b8;
+  }
+
+  /* Category grid */
+  .dash-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .dash-panel {
+    background: #111827;
+    border: 1px solid #1e293b;
+    transition: all 0.25s ease;
+  }
+
+  .dash-panel:hover {
+    border-color: rgba(16, 185, 129, 0.25);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.04);
+  }
+
+  /* Let "Others" span full width when it's the last odd item */
+  .dash-panel:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .dash-panel-header {
+    border-bottom: none;
+  }
+
+  .panel-title {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .panel-count {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.6rem;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .dash-panel-divider {
+    height: 1px;
+    margin: 0 1rem;
+    background: linear-gradient(90deg, transparent, #1e293b 20%, #10b981 50%, #1e293b 80%, transparent);
+    opacity: 0.5;
+  }
+
+  .dash-panel-body {
+    min-height: 60px;
+  }
+
+  .panel-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .panel-tech-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: #0c1017;
+    border: 1px solid #1c2433;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+
+  .panel-tech-item:hover {
+    background: #162031;
+    border-color: #10b981;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  }
+
+  .panel-tech-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+  }
+
+  .panel-tech-name {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #cbd5e1;
+  }
+
+  .panel-tech-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10b981;
+    opacity: 0.6;
+    margin-left: auto;
+  }
+
+  .panel-tech-item:hover .panel-tech-dot {
+    opacity: 1;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+  }
+
+  /* Footer */
+  .dash-footer {
+    background: #0f151d;
+    border-top: 1px solid #1c2433;
+  }
+
+  .footer-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.6rem;
+    color: #64748b;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .dash-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .dash-status {
+      display: none;
+    }
+
+    .dash-breadcrumb {
+      display: none;
+    }
+
+    .dash-separator {
+      display: none;
+    }
+
+    .dash-desc-text {
+      font-size: 0.72rem;
+    }
+
+    .panel-tech-name {
+      font-size: 0.7rem;
+    }
+  }
+</style>
