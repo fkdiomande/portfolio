@@ -60,95 +60,310 @@ const categories = [
 ---
 
 <section data-slot="front-end" class="front-section relative overflow-hidden py-20 sm:py-24">
-  <div class="relative z-10 mx-auto max-w-4xl px-6">
-    <!-- Header -->
-    <div class="front-header flex items-center gap-4 rounded-t-lg px-6 py-5">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="text-white"
-        aria-hidden="true"
-      >
-        <path d="m18 16 4-4-4-4" />
-        <path d="m6 8-4 4 4 4" />
-        <path d="m14.5 4-5 16" />
-      </svg>
-      <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">Front-End</h2>
-    </div>
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <!-- Editor window -->
+    <div class="editor-window rounded-lg overflow-hidden">
+      <!-- Title bar -->
+      <div class="editor-titlebar flex items-center gap-3 px-4 py-3">
+        <div class="flex items-center gap-1.5">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="editor-filename">front-end.tsx</span>
+        <div class="ml-auto flex items-center gap-2">
+          <span class="editor-tab editor-tab-active">front-end.tsx</span>
+          <span class="editor-tab">skills.ts</span>
+        </div>
+      </div>
 
-    <!-- Body -->
-    <div class="front-body rounded-b-lg bg-white px-8 py-10 sm:px-10 sm:py-12">
-      <!-- Intro -->
-      <p class="front-intro mb-4 text-sm font-semibold italic leading-relaxed">
-        Throughout my career, I've honed my expertise as a Front-End Developer, refining and perfecting my skill set in this domain.
-      </p>
-      <p class="front-description mb-10 text-base font-bold leading-relaxed">
-        {description}
-      </p>
+      <!-- Editor body -->
+      <div class="editor-body px-0 py-6 sm:py-8">
+        <!-- Comment block as intro -->
+        <div class="editor-line mb-6">
+          <span class="line-number">1</span>
+          <span class="code-comment">/**</span>
+        </div>
+        <div class="editor-line">
+          <span class="line-number">2</span>
+          <span class="code-comment">&nbsp;* Throughout my career, I've honed my expertise as a</span>
+        </div>
+        <div class="editor-line">
+          <span class="line-number">3</span>
+          <span class="code-comment">&nbsp;* Front-End Developer, refining and perfecting my skill set.</span>
+        </div>
+        <div class="editor-line mb-6">
+          <span class="line-number">4</span>
+          <span class="code-comment">&nbsp;*/</span>
+        </div>
 
-      <!-- Categories grid -->
-      <div class="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+        <!-- Import statement as description -->
+        <div class="editor-line mb-1">
+          <span class="line-number">5</span>
+          <span class="code-keyword">export</span>
+          <span class="code-keyword"> const</span>
+          <span class="code-variable"> profile</span>
+          <span class="code-punctuation"> =</span>
+          <span class="code-string"> `{description.slice(0, 60)}...</span>
+        </div>
+        <div class="editor-line mb-8">
+          <span class="line-number">6</span>
+          <span class="code-string">&nbsp; ...{description.slice(60, 130)}`</span>
+          <span class="code-punctuation">;</span>
+        </div>
+
+        <!-- Blank line -->
+        <div class="editor-line mb-2">
+          <span class="line-number">7</span>
+        </div>
+
+        <!-- Categories as code blocks -->
         {
-          categories.map(({ label, icons }) => (
-            <div>
-              <h3 class="front-category-title text-xl sm:text-2xl font-black tracking-tight mb-1">
-                {label}
-              </h3>
-              <div class="front-category-line mb-5 h-1 w-full rounded-full" />
-              <div class="flex flex-wrap gap-5">
-                {icons.map(({ icon, name }) => (
-                  <div class="flex items-center gap-2">
-                    <Image src={icon} alt={name} width={28} height={28} />
-                    <span class="text-sm font-semibold">{name}</span>
-                  </div>
-                ))}
+          categories.map(({ label, icons }, catIdx) => (
+            <>
+              <div class="editor-line">
+                <span class="line-number">{8 + catIdx * 4}</span>
+                <span class="code-keyword">const</span>
+                <span class="code-function"> {label.replace(/\s+(.)/g, (_, c: string) => c.toUpperCase()).replace(/^(.)/, (c: string) => c.toLowerCase())}</span>
+                <span class="code-punctuation">: </span>
+                <span class="code-type">Stack[]</span>
+                <span class="code-punctuation"> = [</span>
               </div>
-            </div>
+
+              <div class="editor-line">
+                <span class="line-number">{9 + catIdx * 4}</span>
+                <span class="code-indent"></span>
+                <div class="tech-modules">
+                  {icons.map(({ icon, name }) => (
+                    <div class="tech-module group">
+                      <div class="tech-icon-wrapper">
+                        <Image src={icon} alt={name} width={28} height={28} />
+                      </div>
+                      <span class="tech-name">{name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class="editor-line mb-6">
+                <span class="line-number">{10 + catIdx * 4}</span>
+                <span class="code-punctuation">];</span>
+              </div>
+            </>
           ))
         }
+      </div>
+
+      <!-- Status bar -->
+      <div class="editor-statusbar flex items-center justify-between px-4 py-1.5">
+        <div class="flex items-center gap-3">
+          <span class="status-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m18 16 4-4-4-4" />
+              <path d="m6 8-4 4 4 4" />
+              <path d="m14.5 4-5 16" />
+            </svg>
+            Front-End
+          </span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="status-item">TypeScript React</span>
+          <span class="status-item">UTF-8</span>
+          <span class="status-item">Spaces: 2</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .front-header {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-primary-600) 100%
-    );
+  .editor-window {
+    background: #1e1e2e;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 
-  .front-body {
-    border: 1px solid var(--color-border);
-    border-top: none;
+  .editor-titlebar {
+    background: #181825;
+    border-bottom: 1px solid #313244;
   }
 
-  .front-intro {
-    color: var(--color-foreground);
+  .dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
   }
 
-  .front-description {
-    color: var(--color-foreground);
+  .dot-red {
+    background: #f38ba8;
   }
 
-  .front-category-title {
-    color: var(--color-primary-600);
+  .dot-yellow {
+    background: #f9e2af;
   }
 
-  .front-category-line {
-    background: linear-gradient(
-      90deg,
-      var(--color-primary-400) 0%,
-      var(--color-primary-200) 100%
-    );
+  .dot-green {
+    background: #a6e3a1;
+  }
+
+  .editor-filename {
+    font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: 0.75rem;
+    color: #cdd6f4;
+  }
+
+  .editor-tab {
+    font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: 0.7rem;
+    color: #6c7086;
+    padding: 0.2rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: default;
+  }
+
+  .editor-tab-active {
+    color: #cdd6f4;
+    background: #1e1e2e;
+  }
+
+  .editor-body {
+    font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    min-height: 300px;
+  }
+
+  .editor-line {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 1.5rem 0 0;
+    white-space: pre;
+  }
+
+  .line-number {
+    display: inline-block;
+    width: 3.5rem;
+    min-width: 3.5rem;
+    text-align: right;
+    padding-right: 1.25rem;
+    color: #585b70;
+    user-select: none;
+    font-size: 0.75rem;
+  }
+
+  .code-comment {
+    color: #6c7086;
+    font-style: italic;
+  }
+
+  .code-keyword {
+    color: #cba6f7;
+  }
+
+  .code-variable {
+    color: #89b4fa;
+  }
+
+  .code-function {
+    color: #89dceb;
+  }
+
+  .code-type {
+    color: #f9e2af;
+  }
+
+  .code-string {
+    color: #a6e3a1;
+    font-style: italic;
+    font-size: 0.75rem;
+  }
+
+  .code-punctuation {
+    color: #6c7086;
+  }
+
+  .code-indent {
+    display: inline-block;
+    width: 1.5rem;
+  }
+
+  .tech-modules {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+  }
+
+  .tech-module {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #313244;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid #45475a;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+
+  .tech-module:hover {
+    background: #45475a;
+    border-color: #585b70;
+    transform: translateY(-1px);
+  }
+
+  .tech-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
+
+  .tech-name {
+    color: #cdd6f4;
+    font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .editor-statusbar {
+    background: var(--color-primary-800);
+    border-top: 1px solid #313244;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: 0.65rem;
+    color: #cdd6f4;
+  }
+
+  @media (max-width: 640px) {
+    .editor-tab {
+      display: none;
+    }
+
+    .editor-body {
+      font-size: 0.7rem;
+    }
+
+    .tech-modules {
+      padding-left: 0.5rem;
+    }
+
+    .line-number {
+      width: 2.5rem;
+      min-width: 2.5rem;
+      padding-right: 0.75rem;
+    }
+
+    .code-string {
+      font-size: 0.65rem;
+    }
   }
 </style>
