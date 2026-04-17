@@ -1,4 +1,6 @@
 ---
+import H2 from "@/components/ui/typography/H2.astro";
+import Muted from "@/components/ui/typography/Muted.astro";
 import { Image } from "astro:assets";
 import biomeIcon from "@/assets/tech/expertise/biome.svg";
 import bunIcon from "@/assets/tech/expertise/bun.svg";
@@ -67,6 +69,13 @@ const categories = [
   <div class="orb orb-2"></div>
 
   <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <div class="flex flex-col items-center gap-3 text-center mb-14">
+      <Muted class="text-2xs font-semibold tracking-widest opacity-60">Crafting interfaces</Muted>
+      <H2 class="border-0 text-3xl sm:text-4xl font-black tracking-tight">
+        Front-End <span class="front-gradient-text">Development</span>
+      </H2>
+    </div>
+
     <!-- Editor window -->
     <div class="editor-window rounded-lg overflow-hidden">
       <!-- Title bar -->
@@ -183,6 +192,13 @@ const categories = [
 </section>
 
 <style>
+  .front-gradient-text {
+    background: linear-gradient(135deg, #cba6f7 0%, #89b4fa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   /* Dot pattern */
   .dot-pattern {
     background-image: radial-gradient(
