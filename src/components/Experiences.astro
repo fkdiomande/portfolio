@@ -1,0 +1,499 @@
+---
+import { Image } from "astro:assets";
+import mataLogo from "@/assets/companies/mata.svg";
+import ooneexLogo from "@/assets/companies/ooneex.svg";
+import awsIcon from "@/assets/tech/expertise/aws.svg";
+import dockerIcon from "@/assets/tech/expertise/docker.svg";
+import langchainIcon from "@/assets/tech/expertise/langchain.svg";
+import nodeIcon from "@/assets/tech/expertise/node.js.svg";
+import pythonIcon from "@/assets/tech/expertise/python.svg";
+import reactIcon from "@/assets/tech/expertise/react.svg";
+import tailwindIcon from "@/assets/tech/expertise/tailwindcss.svg";
+import terraformIcon from "@/assets/tech/expertise/terraform.svg";
+import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
+import Badge from "@/components/ui/badge/Badge.astro";
+import H2 from "@/components/ui/typography/H2.astro";
+import Muted from "@/components/ui/typography/Muted.astro";
+
+const experiences = [
+  {
+    logo: ooneexLogo,
+    company: "Ooneex",
+    position: "Lead Developer",
+    period: "2022 — 2026",
+    duration: "4 years",
+    field: "EdTech / SaaS",
+    description:
+      "Ooneex is a vertical SaaS platform for medical education that unifies content management, scheduling, assessments, and analytics into a single classroom workspace. It empowers educators and students to organize, study, and track entire courses from one place.",
+    features: [
+      "Built an interactive classroom dashboard providing high-level course overviews with year-level tagging, ownership, and participant management",
+      "Developed a rich resource library supporting books, videos, images, notes, MCQ decks, flashcard decks, and clinical case decks with AI-powered chat capabilities",
+      "Engineered an agenda and events management system for tutorials, labs, workshops, and exams with priority tracking and weekly analytics",
+      "Implemented a folder-based content organization system with per-topic resource counts, favorites, and granular access control",
+      "Created a resource analytics engine with format distribution charts and top-folder rankings",
+      "Designed a credits-based monetization system separating free and premium content folders",
+    ],
+    skills: [
+      "SaaS architecture & multi-tenant design",
+      "AI integration (RAG, conversational agents)",
+      "Real-time data analytics & dashboards",
+      "Payment & credits system design",
+      "Team leadership & code review",
+    ],
+    tech: [
+      { icon: reactIcon, name: "React" },
+      { icon: tailwindIcon, name: "Tailwind CSS" },
+      { icon: typescriptIcon, name: "TypeScript" },
+      { icon: nodeIcon, name: "Node.js" },
+      { icon: pythonIcon, name: "Python" },
+      { icon: dockerIcon, name: "Docker" },
+      { icon: awsIcon, name: "AWS" },
+      { icon: terraformIcon, name: "Terraform" },
+      { icon: langchainIcon, name: "LangChain" },
+    ],
+  },
+  {
+    logo: mataLogo,
+    company: "Mata Capital",
+    position: "Lead Developer",
+    period: "2018 — 2022",
+    duration: "4 years",
+    field: "Real Estate / FinTech",
+    description:
+      "Mata Capital is an independent real estate investment firm managing approximately €2.4 billion in assets across France and Germany. The firm combines investment management, investor solutions, and asset management with a strong focus on innovation, ESG, and long-term value creation.",
+    features: [
+      "Built internal tools for an independent, management-owned investment firm operating with full strategic autonomy across fund decisions",
+      "Developed an integrated asset management platform covering the entire value chain — acquisition, active management, property operations, and disposal",
+      "Engineered cross-border investment workflows supporting the Franco-German positioning with offices in Paris, Lyon, and Hamburg",
+      "Implemented portfolio dashboards for three distinct strategies: Core Plus (€1.4B), Value-Added (€810M), and Private Equity Real Estate (€150M)",
+      "Created data-driven decision tools leveraging advanced analytics to optimize operational management across 70+ professionals",
+      "Built ESG reporting and responsible investing modules integrating sustainability metrics at the heart of investment strategies",
+    ],
+    skills: [
+      "Financial data modeling & portfolio analytics",
+      "Cross-border compliance workflows",
+      "ESG reporting & sustainability tracking",
+      "Data-driven decision support tools",
+      "Scalable architecture for regulated environments",
+    ],
+    tech: [
+      { icon: reactIcon, name: "React" },
+      { icon: tailwindIcon, name: "Tailwind CSS" },
+      { icon: typescriptIcon, name: "TypeScript" },
+      { icon: nodeIcon, name: "Node.js" },
+      { icon: pythonIcon, name: "Python" },
+      { icon: dockerIcon, name: "Docker" },
+      { icon: awsIcon, name: "AWS" },
+      { icon: terraformIcon, name: "Terraform" },
+      { icon: langchainIcon, name: "LangChain" },
+    ],
+  },
+] as const;
+---
+
+<section data-slot="experiences" class="exp-section relative overflow-hidden py-20 sm:py-24">
+  <!-- Background -->
+  <div class="exp-bg absolute inset-0"></div>
+  <div class="exp-orb exp-orb-1"></div>
+  <div class="exp-orb exp-orb-2"></div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <div class="flex flex-col items-center gap-3 text-center mb-14">
+      <Muted class="text-2xs font-semibold tracking-widest opacity-60">Where I've been</Muted>
+      <H2 class="border-0 text-3xl sm:text-4xl font-black tracking-tight">
+        My <span class="exp-gradient-text">Experiences</span>
+      </H2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="exp-timeline">
+      {experiences.map((exp, i) => (
+        <article class="exp-card" style={`animation-delay: ${i * 0.15}s;`}>
+          <!-- Header -->
+          <div class="exp-card-header">
+            <div class="exp-card-top">
+              <div class="exp-logo-wrap">
+                <Image src={exp.logo} alt={exp.company} class="exp-logo" />
+              </div>
+              <div class="exp-header-info">
+                <h3 class="exp-company">{exp.company}</h3>
+                <div class="exp-meta">
+                  <span class="exp-position">{exp.position}</span>
+                  <span class="exp-dot">·</span>
+                  <span class="exp-period">{exp.period}</span>
+                  <span class="exp-dot">·</span>
+                  <span class="exp-duration">{exp.duration}</span>
+                </div>
+              </div>
+              <Badge variant="secondary">{exp.field}</Badge>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="exp-description">
+            <p>{exp.description}</p>
+          </div>
+
+          <!-- Features -->
+          <div class="exp-block">
+            <h4 class="exp-block-title text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 11 12 14 22 4" />
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+              </svg>
+              Key Contributions
+            </h4>
+            <ul class="exp-feature-list">
+              {exp.features.map((feature) => (
+                <li class="exp-feature-item">
+                  <span class="exp-feature-bullet"></span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Skills developed -->
+          <div class="exp-block">
+            <h4 class="exp-block-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+              </svg>
+              Skills Developed
+            </h4>
+            <div class="exp-skills-list">
+              {exp.skills.map((skill) => (
+                <span class="exp-skill-tag">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Tech stack -->
+          <div class="exp-block">
+            <h4 class="exp-block-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m18 16 4-4-4-4" />
+                <path d="m6 8-4 4 4 4" />
+                <path d="m14.5 4-5 16" />
+              </svg>
+              Tech Stack
+            </h4>
+            <div class="exp-tech-list">
+              {exp.tech.map(({ icon, name }) => (
+                <div class="exp-tech-item" title={name}>
+                  <Image src={icon} alt={name} width={22} height={22} />
+                  <span class="exp-tech-name">{name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .exp-gradient-text {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .exp-bg {
+    background-color: transparent;
+    background-image: radial-gradient(circle, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .exp-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .exp-orb-1 {
+    width: 500px;
+    height: 500px;
+    background: #f59e0b;
+    top: -150px;
+    right: -120px;
+  }
+
+  .exp-orb-2 {
+    width: 450px;
+    height: 450px;
+    background: #ef4444;
+    bottom: -150px;
+    left: -120px;
+  }
+
+  /* Timeline */
+  .exp-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* Card */
+  .exp-card {
+    background: var(--color-card);
+    color: var(--color-card-foreground);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 0.4px var(--color-card-ring);
+    padding: 1.75rem;
+    transition: all 0.3s ease;
+    animation: exp-fade-in 0.5s ease-out both;
+  }
+
+  .exp-card:hover {
+    box-shadow: 0 0 0 0.4px var(--color-ring-alt);
+    transform: translateY(-2px);
+  }
+
+  @keyframes exp-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Header */
+  .exp-card-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .exp-card-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .exp-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    padding: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .exp-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .exp-header-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .exp-company {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .exp-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .exp-position {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #f59e0b;
+  }
+
+  .exp-dot {
+    color: var(--color-muted-foreground);
+    font-size: 0.75rem;
+  }
+
+  .exp-period,
+  .exp-duration {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.72rem;
+    color: var(--color-muted-foreground);
+  }
+
+  /* Description */
+  .exp-description {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .exp-description p {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--color-muted-foreground);
+  }
+
+  /* Block sections */
+  .exp-block {
+    margin-bottom: 1.25rem;
+  }
+
+  .exp-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .exp-block-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    /*color: #f59e0b;*/
+    margin-bottom: 0.75rem;
+  }
+
+  /* Features */
+  .exp-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .exp-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--color-muted-foreground);
+  }
+
+  .exp-feature-bullet {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #f59e0b;
+    margin-top: 0.45rem;
+    opacity: 0.7;
+  }
+
+  /* Skills tags */
+  .exp-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exp-skill-tag {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(245, 158, 11, 0.08);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.15);
+    transition: all 0.2s ease;
+  }
+
+  .exp-skill-tag:hover {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+
+  /* Tech list */
+  .exp-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exp-tech-item {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.7rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.4rem;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+
+  .exp-tech-item:hover {
+    border-color: #f59e0b;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.1);
+  }
+
+  .exp-tech-name {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-muted-foreground);
+  }
+
+  .exp-tech-item:hover .exp-tech-name {
+    color: var(--color-foreground);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .exp-card {
+      padding: 1.25rem;
+    }
+
+    .exp-card-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .exp-logo-wrap {
+      width: 40px;
+      height: 40px;
+    }
+
+    .exp-company {
+      font-size: 1.1rem;
+    }
+
+    .exp-description p {
+      font-size: 0.78rem;
+    }
+
+    .exp-feature-item {
+      font-size: 0.75rem;
+    }
+
+    .exp-skill-tag {
+      font-size: 0.65rem;
+    }
+
+    .exp-tech-name {
+      font-size: 0.65rem;
+    }
+  }
+</style>
