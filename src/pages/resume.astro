@@ -640,11 +640,11 @@ const experiences = [
 <style>
   /* Page-level */
   .resume-page {
-    --resume-fg: #1f2233;
+    --resume-fg: var(--color-primary);
     --resume-muted: #5a6076;
     --resume-subtle: #8a90a3;
-    --resume-accent: oklch(0.5747 0.205 296.46);
-    --resume-accent-soft: oklch(0.93 0.037 296);
+    --resume-accent: var(--color-primary);
+    --resume-accent-soft: var(--color-primary-100);
     --resume-secondary: oklch(0.6684 0.1648 31.5743);
     --resume-secondary-soft: oklch(0.95 0.03 31);
     --resume-rule: #e3e5ee;
@@ -815,8 +815,8 @@ const experiences = [
     gap: 18px;
     margin-bottom: 24px;
     padding: 16px;
-    border: 1px solid var(--resume-rule);
-    border-radius: 8px;
+    border: 1px solid var(--color-card-ring);
+    border-radius: var(--radius);
     background: linear-gradient(135deg, var(--resume-accent-soft) 0%, #fff 50%, var(--resume-secondary-soft) 100%);
     break-inside: avoid;
     page-break-inside: avoid;
