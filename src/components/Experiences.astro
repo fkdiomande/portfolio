@@ -11,9 +11,16 @@ import reactIcon from "@/assets/tech/expertise/react.svg";
 import tailwindIcon from "@/assets/tech/expertise/tailwindcss.svg";
 import terraformIcon from "@/assets/tech/expertise/terraform.svg";
 import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
-import Badge from "@/components/ui/badge/Badge.astro";
+import Card from "@/components/ui/card/Card.astro";
+import CardContent from "@/components/ui/card/CardContent.astro";
+import CardDescription from "@/components/ui/card/CardDescription.astro";
+import CardHeader from "@/components/ui/card/CardHeader.astro";
+import CardTitle from "@/components/ui/card/CardTitle.astro";
+import Chip from "@/components/ui/chip/Chip.astro";
+import Separator from "@/components/ui/separator/Separator.astro";
 import H2 from "@/components/ui/typography/H2.astro";
 import Muted from "@/components/ui/typography/Muted.astro";
+import Small from "@/components/ui/typography/Small.astro";
 
 const experiences = [
   {
@@ -91,11 +98,11 @@ const experiences = [
 ] as const;
 ---
 
-<section data-slot="experiences" class="exp-section relative overflow-hidden py-20 sm:py-24">
+<section data-slot="experiences" class="relative overflow-hidden py-20 sm:py-24">
   <!-- Background -->
   <div class="exp-bg absolute inset-0"></div>
-  <div class="exp-orb exp-orb-1"></div>
-  <div class="exp-orb exp-orb-2"></div>
+  <div class="absolute rounded-full blur-[120px] opacity-10 pointer-events-none w-125 h-125 bg-amber-500 -top-37.5 -right-30"></div>
+  <div class="absolute rounded-full blur-[120px] opacity-10 pointer-events-none w-112.5 h-112.5 bg-red-500 -bottom-37.5 -left-30"></div>
 
   <div class="relative z-10 mx-auto max-w-6xl px-6">
     <div class="flex flex-col items-center gap-3 text-center mb-14">
@@ -106,88 +113,90 @@ const experiences = [
     </div>
 
     <!-- Timeline -->
-    <div class="exp-timeline">
+    <div class="flex flex-col gap-10">
       {experiences.map((exp, i) => (
-        <article class="exp-card" style={`animation-delay: ${i * 0.15}s;`}>
+        <Card hoverable class="exp-card p-7! cursor-default!" style={`animation-delay: ${i * 0.15}s;`}>
           <!-- Header -->
-          <div class="exp-card-header">
-            <div class="exp-card-top">
-              <div class="exp-logo-wrap">
-                <Image src={exp.logo} alt={exp.company} class="exp-logo" />
+          <CardHeader class="gap-3!">
+            <div class="flex items-center gap-4 flex-wrap">
+              <div class="bg-card text-card-foreground overflow-hidden rounded p-2 ring-[0.2px] ring-card-ring flex items-center justify-center size-12 shrink-0">
+                <Image src={exp.logo} alt={exp.company} class="w-full h-full object-contain" />
               </div>
-              <div class="exp-header-info">
-                <h3 class="exp-company">{exp.company}</h3>
-                <div class="exp-meta">
-                  <span class="exp-position">{exp.position}</span>
-                  <span class="exp-dot">·</span>
-                  <span class="exp-period">{exp.period}</span>
-                  <span class="exp-dot">·</span>
-                  <span class="exp-duration">{exp.duration}</span>
+              <div class="flex-1 min-w-0">
+                <CardTitle class="text-xl! font-extrabold! tracking-tight">{exp.company}</CardTitle>
+                <div class="flex items-center gap-2 mt-1 flex-wrap">
+                  <Small class="font-mono text-secondary">{exp.position}</Small>
+                  <Muted class="text-xs">·</Muted>
+                  <Muted class="font-mono text-[0.72rem]">{exp.period}</Muted>
+                  <Muted class="text-xs">·</Muted>
+                  <Muted class="font-mono text-[0.72rem]">{exp.duration}</Muted>
                 </div>
               </div>
-              <Badge variant="secondary">{exp.field}</Badge>
+              <span class="exp-field-badge font-mono text-2xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full text-white shrink-0">{exp.field}</span>
             </div>
-          </div>
+          </CardHeader>
 
           <!-- Description -->
-          <div class="exp-description">
-            <p>{exp.description}</p>
-          </div>
+          <CardContent>
+            <CardDescription class="text-[0.85rem]! leading-7!">{exp.description}</CardDescription>
+          </CardContent>
+
+          <Separator />
 
           <!-- Features -->
-          <div class="exp-block">
-            <h4 class="exp-block-title text-secondary">
+          <CardContent class="flex flex-col gap-3">
+            <Small class="flex items-center gap-2 font-mono font-bold! uppercase tracking-wider text-secondary">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="9 11 12 14 22 4" />
                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
               </svg>
               Key Contributions
-            </h4>
-            <ul class="exp-feature-list">
+            </Small>
+            <ul class="flex flex-col gap-2 list-none p-0 m-0">
               {exp.features.map((feature) => (
-                <li class="exp-feature-item">
-                  <span class="exp-feature-bullet"></span>
+                <li class="flex items-start gap-2.5 text-[0.8rem] leading-relaxed text-muted-foreground">
+                  <span class="shrink-0 size-1.25 rounded-full bg-amber-500 mt-[0.45rem] opacity-70"></span>
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </CardContent>
 
           <!-- Skills developed -->
-          <div class="exp-block">
-            <h4 class="exp-block-title">
+          <CardContent class="flex flex-col gap-3">
+            <Small class="flex items-center gap-2 font-mono font-bold! uppercase tracking-wider text-secondary">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
               </svg>
               Skills Developed
-            </h4>
-            <div class="exp-skills-list">
+            </Small>
+            <div class="flex flex-wrap gap-2">
               {exp.skills.map((skill) => (
-                <span class="exp-skill-tag">{skill}</span>
+                <Chip>{skill}</Chip>
               ))}
             </div>
-          </div>
+          </CardContent>
 
           <!-- Tech stack -->
-          <div class="exp-block">
-            <h4 class="exp-block-title">
+          <CardContent class="flex flex-col gap-3">
+            <Small class="flex items-center gap-2 font-mono font-bold! uppercase tracking-wider text-secondary">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="m18 16 4-4-4-4" />
                 <path d="m6 8-4 4 4 4" />
                 <path d="m14.5 4-5 16" />
               </svg>
               Tech Stack
-            </h4>
-            <div class="exp-tech-list">
+            </Small>
+            <div class="flex flex-wrap gap-2">
               {exp.tech.map(({ icon, name }) => (
-                <div class="exp-tech-item" title={name}>
+                <div class="group flex items-center gap-1.5 px-2.5 py-1.5 bg-background border border-border rounded transition-all duration-200 cursor-default hover:border-amber-500 hover:-translate-y-px hover:shadow-[0_2px_8px_rgba(245,158,11,0.1)]" title={name}>
                   <Image src={icon} alt={name} width={22} height={22} />
-                  <span class="exp-tech-name">{name}</span>
+                  <Small class="font-mono text-muted-foreground group-hover:text-foreground">{name}</Small>
                 </div>
               ))}
             </div>
-          </div>
-        </article>
+          </CardContent>
+        </Card>
       ))}
     </div>
   </div>
@@ -201,57 +210,19 @@ const experiences = [
     -webkit-text-fill-color: transparent;
   }
 
+  .exp-field-badge {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    box-shadow: 0 2px 12px rgba(var(--color-primary), 0.3), 0 0 20px rgba(var(--color-secondary), 0.15);
+  }
+
   .exp-bg {
     background-color: transparent;
     background-image: radial-gradient(circle, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
-  .exp-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.1;
-    pointer-events: none;
-  }
-
-  .exp-orb-1 {
-    width: 500px;
-    height: 500px;
-    background: #f59e0b;
-    top: -150px;
-    right: -120px;
-  }
-
-  .exp-orb-2 {
-    width: 450px;
-    height: 450px;
-    background: #ef4444;
-    bottom: -150px;
-    left: -120px;
-  }
-
-  /* Timeline */
-  .exp-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  /* Card */
   .exp-card {
-    background: var(--color-card);
-    color: var(--color-card-foreground);
-    border-radius: var(--radius);
-    box-shadow: 0 0 0 0.4px var(--color-card-ring);
-    padding: 1.75rem;
-    transition: all 0.3s ease;
     animation: exp-fade-in 0.5s ease-out both;
-  }
-
-  .exp-card:hover {
-    box-shadow: 0 0 0 0.4px var(--color-ring-alt);
-    transform: translateY(-2px);
   }
 
   @keyframes exp-fade-in {
@@ -262,238 +233,6 @@ const experiences = [
     to {
       opacity: 1;
       transform: translateY(0);
-    }
-  }
-
-  /* Header */
-  .exp-card-header {
-    margin-bottom: 1.25rem;
-  }
-
-  .exp-card-top {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .exp-logo-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 0.5rem;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    padding: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .exp-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .exp-header-info {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .exp-company {
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-
-  .exp-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.25rem;
-    flex-wrap: wrap;
-  }
-
-  .exp-position {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #f59e0b;
-  }
-
-  .exp-dot {
-    color: var(--color-muted-foreground);
-    font-size: 0.75rem;
-  }
-
-  .exp-period,
-  .exp-duration {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.72rem;
-    color: var(--color-muted-foreground);
-  }
-
-  /* Description */
-  .exp-description {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .exp-description p {
-    font-size: 0.85rem;
-    line-height: 1.75;
-    color: var(--color-muted-foreground);
-  }
-
-  /* Block sections */
-  .exp-block {
-    margin-bottom: 1.25rem;
-  }
-
-  .exp-block:last-child {
-    margin-bottom: 0;
-  }
-
-  .exp-block-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    /*color: #f59e0b;*/
-    margin-bottom: 0.75rem;
-  }
-
-  /* Features */
-  .exp-feature-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .exp-feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.65rem;
-    font-size: 0.8rem;
-    line-height: 1.65;
-    color: var(--color-muted-foreground);
-  }
-
-  .exp-feature-bullet {
-    flex-shrink: 0;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #f59e0b;
-    margin-top: 0.45rem;
-    opacity: 0.7;
-  }
-
-  /* Skills tags */
-  .exp-skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .exp-skill-tag {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.7rem;
-    font-weight: 500;
-    padding: 0.3rem 0.75rem;
-    border-radius: 9999px;
-    background: rgba(245, 158, 11, 0.08);
-    color: #f59e0b;
-    border: 1px solid rgba(245, 158, 11, 0.15);
-    transition: all 0.2s ease;
-  }
-
-  .exp-skill-tag:hover {
-    background: rgba(245, 158, 11, 0.15);
-    border-color: rgba(245, 158, 11, 0.3);
-  }
-
-  /* Tech list */
-  .exp-tech-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .exp-tech-item {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.35rem 0.7rem;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 0.4rem;
-    transition: all 0.2s ease;
-    cursor: default;
-  }
-
-  .exp-tech-item:hover {
-    border-color: #f59e0b;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.1);
-  }
-
-  .exp-tech-name {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--color-muted-foreground);
-  }
-
-  .exp-tech-item:hover .exp-tech-name {
-    color: var(--color-foreground);
-  }
-
-  /* Responsive */
-  @media (max-width: 640px) {
-    .exp-card {
-      padding: 1.25rem;
-    }
-
-    .exp-card-top {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    .exp-logo-wrap {
-      width: 40px;
-      height: 40px;
-    }
-
-    .exp-company {
-      font-size: 1.1rem;
-    }
-
-    .exp-description p {
-      font-size: 0.78rem;
-    }
-
-    .exp-feature-item {
-      font-size: 0.75rem;
-    }
-
-    .exp-skill-tag {
-      font-size: 0.65rem;
-    }
-
-    .exp-tech-name {
-      font-size: 0.65rem;
     }
   }
 </style>
