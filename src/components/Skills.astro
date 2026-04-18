@@ -53,7 +53,7 @@ const skills = [
     <div class="flex flex-col items-center gap-3 text-center mb-14">
       <Muted class="text-2xs font-semibold tracking-widest opacity-60">What I do</Muted>
       <H2 class="border-0 text-3xl sm:text-4xl font-black tracking-tight">
-        Skills & <span class="skills-gradient-text">Expertise</span>
+        Skills & <span class="bg-linear-to-br from-primary to-secondary bg-clip-text text-transparent">Expertise</span>
       </H2>
     </div>
 
@@ -62,7 +62,7 @@ const skills = [
         skills.map(({ title, description, color, icon }) => (
           <article class="skill-item group" style={`--skill-color: ${color};`}>
             <div class="flex items-center gap-4 mb-4">
-              <div class="skill-icon relative flex size-16 shrink-0 items-center justify-center rounded-md transition-transform duration-300 group-hover:-translate-y-1 group-hover:-rotate-3">
+              <div class="relative flex size-16 shrink-0 items-center justify-center rounded-md transition-transform duration-300 group-hover:-translate-y-1 group-hover:-rotate-3 bg-[var(--skill-color)]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
@@ -77,13 +77,13 @@ const skills = [
                   class="text-white"
                   set:html={icon}
                 />
-                <span class="skill-icon-glow absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span class="hidden absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               </div>
-              <h3 class="skill-title text-2xl sm:text-3xl font-black tracking-tight leading-none">
+              <h3 class="text-2xl sm:text-3xl font-black tracking-tight leading-none text-[var(--skill-color)]">
                 {title}
               </h3>
             </div>
-            <p class="skill-description text-base font-bold leading-snug max-w-xs">
+            <p class="text-base font-bold leading-snug max-w-xs text-[var(--skill-color)]">
               {description}
             </p>
           </article>
@@ -93,31 +93,3 @@ const skills = [
   </div>
 </section>
 
-<style>
-  .skills-gradient-text {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-secondary) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .skill-icon {
-    background: var(--skill-color);
-  }
-
-  .skill-icon-glow {
-    display: none;
-  }
-
-  .skill-title {
-    color: var(--skill-color);
-  }
-
-  .skill-description {
-    color: var(--skill-color);
-  }
-</style>

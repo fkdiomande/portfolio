@@ -45,17 +45,17 @@ const items = [
 
 <section data-slot="dev-ops" class="devops-section relative overflow-hidden py-20 sm:py-24">
   <!-- Subtle dot pattern -->
-  <div class="devops-bg absolute inset-0"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(124,58,237,0.06)_1px,transparent_1px)] [background-size:24px_24px]"></div>
 
   <!-- Soft gradient orbs -->
-  <div class="devops-orb devops-orb-1"></div>
-  <div class="devops-orb devops-orb-2"></div>
+  <div class="absolute rounded-full blur-[120px] opacity-[0.08] pointer-events-none w-[600px] h-[600px] bg-[#7c3aed] -top-[200px] -right-[150px]"></div>
+  <div class="absolute rounded-full blur-[120px] opacity-[0.08] pointer-events-none w-[500px] h-[500px] bg-[#a855f7] -bottom-[200px] -left-[150px]"></div>
 
   <div class="relative z-10 mx-auto max-w-6xl px-6">
     <div class="flex flex-col items-center gap-3 text-center mb-10">
       <Muted class="text-2xs font-semibold tracking-widest opacity-60">Shipping with confidence</Muted>
       <H2 class="border-0 text-3xl sm:text-4xl font-black tracking-tight">
-        Dev & <span class="devops-gradient-text">Ops</span>
+        Dev & <span class="bg-linear-to-br from-[#7c3aed] via-[#a855f7] to-[#6366f1] bg-clip-text text-transparent">Ops</span>
       </H2>
     </div>
 
@@ -65,36 +65,35 @@ const items = [
     </div>
 
     <!-- Pipeline cards -->
-    <div class="pipeline">
+    <div class="relative grid grid-cols-4 gap-6 max-[900px]:grid-cols-2 max-[900px]:gap-x-5 max-[900px]:gap-y-8 max-[540px]:grid-cols-1 max-[540px]:gap-x-6 max-[540px]:gap-y-6">
       {items.map((item, i) => (
-        <div class="pipeline-step">
+        <div class="relative flex flex-col items-center gap-4">
           {/* Connector line between cards */}
-          {i < items.length - 1 && <div class="pipeline-connector" />}
+          {i < items.length - 1 && (
+            <div class="absolute top-[18px] left-[calc(50%+20px)] right-[calc(-50%+20px)] h-0.5 z-[1] bg-linear-to-r from-[#7c3aed] to-[#7c3aed]/15 max-[900px]:hidden" />
+          )}
 
           {/* Step number */}
-          <div class="pipeline-number">
-            <span class="pipeline-number-text">{String(i + 1).padStart(2, "0")}</span>
+          <div class="relative w-[38px] h-[38px] rounded-full bg-linear-to-br from-[#7c3aed] to-[#a855f7] flex items-center justify-center z-[2] shrink-0">
+            <span class="font-mono text-xs font-bold text-white">{String(i + 1).padStart(2, "0")}</span>
           </div>
 
           {/* Card */}
-          <div class="pipeline-card">
-            <div class="pipeline-card-top">
-              <div class="pipeline-icon">
+          <div class="w-full flex-1 text-xs bg-card text-card-foreground rounded-[var(--radius)] p-5 transition-all duration-300 cursor-pointer shadow-[0_0_0_0.4px_var(--color-card-ring)] hover:shadow-[0_0_0_0.4px_var(--color-ring-alt)] hover:-translate-y-[3px]">
+            <div class="flex items-start justify-between mb-3.5">
+              <div class="w-12 h-12 rounded-xl bg-[#7c3aed]/[0.04] border border-[#7c3aed]/[0.08] flex items-center justify-center">
                 <Image src={item.icon} alt={item.name} width={32} height={32} />
               </div>
-              <div class="pipeline-meta">
+              <div class="flex flex-col items-end gap-[0.35rem]">
                 <Chip>{item.category}</Chip>
-                <span class="pipeline-status">
-                  <span class="pipeline-status-dot" />
+                <span class="flex items-center gap-[0.3rem] font-mono text-[0.6rem] font-medium text-[#22c55e]">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#22c55e]" />
                   {item.status}
                 </span>
               </div>
             </div>
-            <h3 class="pipeline-name">{item.name}</h3>
-            <p class="pipeline-desc">{item.description}</p>
-            <div class="pipeline-bar">
-              <div class="pipeline-bar-fill" style={`animation-delay: ${i * 0.3}s;`} />
-            </div>
+            <h3 class="text-base font-bold text-[#1e293b] mb-[0.4rem]">{item.name}</h3>
+            <p class="text-[0.78rem] leading-[1.6] text-[#64748b] mb-4">{item.description}</p>
           </div>
         </div>
       ))}
@@ -102,207 +101,10 @@ const items = [
   </div>
 </section>
 
-<style>
-  .devops-gradient-text {
-    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #6366f1 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .devops-bg {
-    background-color: transparent;
-    background-image: radial-gradient(circle, rgba(124, 58, 237, 0.06) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .devops-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.08;
-    pointer-events: none;
-  }
-
-  .devops-orb-1 {
-    width: 600px;
-    height: 600px;
-    background: #7c3aed;
-    top: -200px;
-    right: -150px;
-  }
-
-  .devops-orb-2 {
-    width: 500px;
-    height: 500px;
-    background: #a855f7;
-    bottom: -200px;
-    left: -150px;
-  }
-
-  /* Pipeline layout */
-  .pipeline {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    position: relative;
-  }
-
-  .pipeline-step {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  /* Connector line between steps */
-  .pipeline-connector {
-    position: absolute;
-    top: 18px;
-    left: calc(50% + 20px);
-    right: calc(-50% + 20px);
-    height: 2px;
-    background: linear-gradient(90deg, #7c3aed 0%, rgba(124, 58, 237, 0.15) 100%);
-    z-index: 1;
-  }
-
-  /* Step number circle */
-  .pipeline-number {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    flex-shrink: 0;
-  }
-
-  .pipeline-number-text {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: white;
-  }
-
-/* Card */
-  .pipeline-card {
-    width: 100%;
-    font-size: 0.75rem;
-    background: var(--color-card);
-    color: var(--color-card-foreground);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    transition: all 0.3s ease;
-    flex: 1;
-    box-shadow: 0 0 0 0.4px var(--color-card-ring);
-  }
-
-  .pipeline-card:hover {
-    box-shadow: 0 0 0 0.4px var(--color-ring-alt);
-    transform: translateY(-3px);
-    cursor: pointer;
-  }
-
-  .pipeline-card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 0.875rem;
-  }
-
-  .pipeline-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 0.75rem;
-    background: rgba(124, 58, 237, 0.04);
-    border: 1px solid rgba(124, 58, 237, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .pipeline-meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.35rem;
-  }
-
-  .pipeline-status {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.6rem;
-    font-weight: 500;
-    color: #22c55e;
-  }
-
-  .pipeline-status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #22c55e;
-  }
-
-  .pipeline-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 0.4rem;
-  }
-
-  .pipeline-desc {
-    font-size: 0.78rem;
-    line-height: 1.6;
-    color: #64748b;
-    margin-bottom: 1rem;
-  }
-
-  /* Progress bar */
-  .pipeline-bar {
-    height: 3px;
-    border-radius: 9999px;
-    background: rgba(124, 58, 237, 0.08);
-    overflow: hidden;
-  }
-
-  .pipeline-bar-fill {
-    height: 100%;
-    width: 100%;
-    border-radius: 9999px;
-    background: linear-gradient(90deg, #7c3aed, #a855f7);
-    animation: fill-bar 2.5s ease-out forwards;
-    transform-origin: left;
-    transform: scaleX(0);
-  }
-
+<style is:global>
   @keyframes fill-bar {
     to {
       transform: scaleX(1);
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .pipeline {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem 1.25rem;
-    }
-
-    .pipeline-connector {
-      display: none;
-    }
-  }
-
-  @media (max-width: 540px) {
-    .pipeline {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
     }
   }
 </style>

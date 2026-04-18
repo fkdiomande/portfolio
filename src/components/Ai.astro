@@ -53,27 +53,27 @@ const categories = [
 
 <section data-slot="ai-agentic" class="ai-section relative overflow-hidden py-20 sm:py-24">
   <!-- Neural network pattern background -->
-  <div class="neural-bg absolute inset-0"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_30px_30px,rgba(139,92,246,0.04)_2px,transparent_0),radial-gradient(circle_at_60px_60px,rgba(139,92,246,0.025)_1px,transparent_0),linear-gradient(rgba(139,92,246,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.015)_1px,transparent_1px)] [background-size:60px_60px,60px_60px,30px_30px,30px_30px]"></div>
 
   <!-- Gradient orbs -->
-  <div class="ai-orb ai-orb-1"></div>
-  <div class="ai-orb ai-orb-2"></div>
-  <div class="ai-orb ai-orb-3"></div>
+  <div class="absolute rounded-full blur-[100px] opacity-15 pointer-events-none w-[500px] h-[500px] bg-[#8b5cf6] -top-[150px] -left-[100px]"></div>
+  <div class="absolute rounded-full blur-[100px] opacity-15 pointer-events-none w-[400px] h-[400px] bg-[#a78bfa] -bottom-[120px] -right-[80px]"></div>
+  <div class="absolute rounded-full blur-[100px] opacity-15 pointer-events-none w-[250px] h-[250px] bg-[#c084fc] top-1/2 right-[20%] -translate-y-1/2"></div>
 
   <div class="relative z-10 mx-auto max-w-6xl px-6">
     <div class="flex flex-col items-center gap-3 text-center mb-14">
       <Muted class="text-2xs font-semibold tracking-widest opacity-60">Intelligent systems</Muted>
       <H2 class="border-0 text-3xl sm:text-4xl font-black tracking-tight">
-        AI & <span class="ai-gradient-text">Agentic</span>
+        AI & <span class="bg-linear-to-br from-[#8b5cf6] to-[#c084fc] bg-clip-text text-transparent">Agentic</span>
       </H2>
     </div>
 
     <!-- Chat window container -->
-    <div class="chat-window rounded-xl overflow-hidden">
+    <div class="rounded-xl overflow-hidden bg-[#0d0b1a] border border-[#1e1635]">
       <!-- Title bar -->
-      <div class="chat-titlebar flex items-center justify-between px-5 py-3">
+      <div class="flex items-center justify-between px-5 py-3 bg-[#110e20] border-b border-[#1e1635]">
         <div class="flex items-center gap-3">
-          <div class="chat-avatar">
+          <div class="w-7 h-7 rounded-lg bg-[#8b5cf6]/15 border border-[#8b5cf6]/25 flex items-center justify-center text-[#8b5cf6]">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 8V4H8" />
               <rect x="2" y="2" width="20" height="20" rx="2" />
@@ -81,75 +81,75 @@ const categories = [
               <path d="m2 18 6-3 6 3 6-3" />
             </svg>
           </div>
-          <span class="chat-title">AI & Agentic</span>
-          <span class="chat-separator"></span>
-          <span class="chat-subtitle">Agent Chat</span>
+          <span class="font-mono text-[0.85rem] font-bold text-[#e2e8f0] -tracking-[0.01em]">AI & Agentic</span>
+          <span class="w-px h-4 bg-[#2d2645] max-sm:hidden"></span>
+          <span class="font-mono text-xs text-[#64748b] max-sm:hidden">Agent Chat</span>
         </div>
         <div class="flex items-center gap-3">
-          <span class="chat-online">
-            <span class="online-dot"></span>
+          <span class="flex items-center gap-2 font-mono text-[0.65rem] text-[#8b5cf6] bg-[#8b5cf6]/[0.08] px-3 py-[0.3rem] rounded-full border border-[#8b5cf6]/15 max-sm:hidden">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8b5cf6] animate-[ai-pulse-glow_2s_ease-in-out_infinite]"></span>
             Online
           </span>
         </div>
       </div>
 
       <!-- Chat body -->
-      <div class="chat-body px-5 py-6">
+      <div class="px-5 py-6 bg-[#0d0b1a]">
         <!-- System prompt message -->
-        <div class="chat-message system-message mb-6">
-          <div class="msg-header flex items-center gap-2 mb-2">
-            <span class="msg-role system-role">SYSTEM</span>
-            <span class="msg-time">prompt</span>
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="font-mono text-[0.6rem] font-bold tracking-[0.08em] px-2 py-[0.15rem] rounded text-[#f59e0b] bg-[#f59e0b]/10 border border-[#f59e0b]/15">SYSTEM</span>
+            <span class="font-mono text-[0.6rem] text-[#475569]">prompt</span>
           </div>
-          <div class="msg-bubble system-bubble">
+          <div class="rounded-xl rounded-tl-sm px-4 py-[0.85rem] text-[0.8rem] leading-[1.7] max-sm:text-[0.72rem] bg-[#f59e0b]/[0.04] border border-[#f59e0b]/10 text-[#94a3b8]">
             <p>{description}</p>
           </div>
         </div>
 
         <!-- User message asking about capabilities -->
-        <div class="chat-message user-message mb-6">
-          <div class="msg-header flex items-center gap-2 mb-2 justify-end">
-            <span class="msg-time">just now</span>
-            <span class="msg-role user-role">USER</span>
+        <div class="mb-6 flex flex-col items-end">
+          <div class="flex items-center gap-2 mb-2 justify-end">
+            <span class="font-mono text-[0.6rem] text-[#475569]">just now</span>
+            <span class="font-mono text-[0.6rem] font-bold tracking-[0.08em] px-2 py-[0.15rem] rounded text-[#3b82f6] bg-[#3b82f6]/10 border border-[#3b82f6]/15">USER</span>
           </div>
-          <div class="msg-bubble user-bubble">
+          <div class="rounded-xl rounded-tr-sm px-4 py-[0.85rem] text-[0.8rem] leading-[1.7] max-sm:text-[0.72rem] bg-[#3b82f6]/[0.08] border border-[#3b82f6]/[0.12] text-[#cbd5e1] inline-block max-w-[80%] max-sm:max-w-full">
             <p>What tools and frameworks are in your stack?</p>
           </div>
         </div>
 
         <!-- Agent response with tool calls -->
-        <div class="chat-message agent-message">
-          <div class="msg-header flex items-center gap-2 mb-3">
-            <span class="msg-role agent-role">AGENT</span>
-            <span class="msg-time">responding...</span>
-            <span class="typing-indicator">
-              <span class="typing-dot"></span>
-              <span class="typing-dot"></span>
-              <span class="typing-dot"></span>
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="font-mono text-[0.6rem] font-bold tracking-[0.08em] px-2 py-[0.15rem] rounded text-[#8b5cf6] bg-[#8b5cf6]/10 border border-[#8b5cf6]/15">AGENT</span>
+            <span class="font-mono text-[0.6rem] text-[#475569]">responding...</span>
+            <span class="flex items-center gap-[3px] ml-1">
+              <span class="w-1 h-1 rounded-full bg-[#8b5cf6] animate-[typing-bounce_1.4s_ease-in-out_infinite]"></span>
+              <span class="w-1 h-1 rounded-full bg-[#8b5cf6] animate-[typing-bounce_1.4s_ease-in-out_infinite] [animation-delay:0.2s]"></span>
+              <span class="w-1 h-1 rounded-full bg-[#8b5cf6] animate-[typing-bounce_1.4s_ease-in-out_infinite] [animation-delay:0.4s]"></span>
             </span>
           </div>
 
           <!-- Tool calls as response -->
-          <div class="tool-calls">
+          <div>
             {
               categories.map(({ label, icons }) => (
-                <div class="tool-call mb-3">
-                  <div class="tool-header flex items-center gap-2 px-3 py-2">
+                <div class="mb-3 bg-[#13102a] border border-[#1e1b3a] rounded-lg overflow-hidden transition-all duration-[0.25s] hover:border-[#8b5cf6]/25 hover:shadow-[0_0_20px_rgba(139,92,246,0.04)]">
+                  <div class="flex items-center gap-2 px-3 py-2 bg-[#8b5cf6]/[0.06] border-b border-[#1e1b3a] text-[#8b5cf6]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                     </svg>
-                    <span class="tool-name">tool_use: {label.toLowerCase().replace(/\s+/g, "_")}</span>
-                    <span class="tool-badge">{icons.length} loaded</span>
+                    <span class="font-mono text-[0.7rem] font-semibold text-[#a78bfa]">tool_use: {label.toLowerCase().replace(/\s+/g, "_")}</span>
+                    <span class="font-mono text-[0.55rem] text-[#8b5cf6] bg-[#8b5cf6]/10 px-[0.4rem] py-[0.1rem] rounded-full font-semibold ml-auto">{icons.length} loaded</span>
                   </div>
-                  <div class="tool-body px-3 py-3">
-                    <div class="tool-items">
+                  <div class="px-3 py-3">
+                    <div class="flex flex-wrap gap-[0.6rem]">
                       {icons.map(({ icon, name }) => (
-                        <div class="tool-item">
-                          <div class="tool-icon">
+                        <div class="group/item flex items-center gap-2 px-3 py-[0.4rem] bg-[#0d0b1a] border border-[#1e1635] rounded-lg transition-all duration-200 cursor-default hover:bg-[#1a1535] hover:border-[#8b5cf6] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(139,92,246,0.1)]">
+                          <div class="flex items-center justify-center w-[26px] h-[26px]">
                             <Image src={icon} alt={name} width={26} height={26} />
                           </div>
-                          <span class="tool-item-name">{name}</span>
-                          <span class="tool-check">
+                          <span class="font-mono text-[0.78rem] font-medium text-[#cbd5e1] max-sm:text-[0.7rem]">{name}</span>
+                          <span class="text-[#8b5cf6] opacity-50 ml-auto flex items-center group-hover/item:opacity-100">
                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
@@ -166,392 +166,30 @@ const categories = [
       </div>
 
       <!-- Input bar -->
-      <div class="chat-input flex items-center gap-3 px-5 py-3">
-        <div class="input-field flex-1 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon" aria-hidden="true">
+      <div class="flex items-center gap-3 px-5 py-3 bg-[#110e20] border-t border-[#1e1635]">
+        <div class="flex-1 flex items-center gap-2 bg-[#0d0b1a] border border-[#1e1635] rounded-lg px-3 py-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#8b5cf6] opacity-50" aria-hidden="true">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
           </svg>
-          <span class="input-placeholder">Ask the agent...</span>
+          <span class="font-mono text-[0.72rem] text-[#3d3559]">Ask the agent...</span>
         </div>
         <div class="flex items-center gap-3">
-          <span class="input-hint">Multi-Agent</span>
-          <span class="input-hint">RAG Pipeline</span>
+          <span class="font-mono text-[0.6rem] text-[#64748b] max-sm:hidden">Multi-Agent</span>
+          <span class="font-mono text-[0.6rem] text-[#64748b] max-sm:hidden">RAG Pipeline</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<style>
-  .ai-gradient-text {
-    background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* Neural network subtle pattern */
-  .neural-bg {
-    background-color: transparent;
-    background-image:
-      radial-gradient(circle at 30px 30px, rgba(139, 92, 246, 0.04) 2px, transparent 0),
-      radial-gradient(circle at 60px 60px, rgba(139, 92, 246, 0.025) 1px, transparent 0),
-      linear-gradient(rgba(139, 92, 246, 0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.015) 1px, transparent 1px);
-    background-size: 60px 60px, 60px 60px, 30px 30px, 30px 30px;
-  }
-
-  .ai-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.15;
-    pointer-events: none;
-  }
-
-  .ai-orb-1 {
-    width: 500px;
-    height: 500px;
-    background: #8b5cf6;
-    top: -150px;
-    left: -100px;
-  }
-
-  .ai-orb-2 {
-    width: 400px;
-    height: 400px;
-    background: #a78bfa;
-    bottom: -120px;
-    right: -80px;
-  }
-
-  .ai-orb-3 {
-    width: 250px;
-    height: 250px;
-    background: #c084fc;
-    top: 50%;
-    right: 20%;
-    transform: translateY(-50%);
-  }
-
-  /* Chat window shell */
-  .chat-window {
-    background: #0d0b1a;
-    border: 1px solid #1e1635;
-  }
-
-  /* Title bar */
-  .chat-titlebar {
-    background: #110e20;
-    border-bottom: 1px solid #1e1635;
-  }
-
-  .chat-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    background: rgba(139, 92, 246, 0.15);
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #8b5cf6;
-  }
-
-  .chat-title {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #e2e8f0;
-    letter-spacing: -0.01em;
-  }
-
-  .chat-separator {
-    width: 1px;
-    height: 16px;
-    background: #2d2645;
-  }
-
-  .chat-subtitle {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.75rem;
-    color: #64748b;
-  }
-
-  .chat-online {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.65rem;
-    color: #8b5cf6;
-    background: rgba(139, 92, 246, 0.08);
-    padding: 0.3rem 0.75rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(139, 92, 246, 0.15);
-  }
-
-  .online-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #8b5cf6;
-    animation: ai-pulse-glow 2s ease-in-out infinite;
-  }
-
+<style is:global>
   @keyframes ai-pulse-glow {
     0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
     50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(139, 92, 246, 0); }
   }
 
-  /* Chat body */
-  .chat-body {
-    background: #0d0b1a;
-  }
-
-  /* Message shared */
-  .msg-role {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-  }
-
-  .msg-time {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.6rem;
-    color: #475569;
-  }
-
-  .msg-bubble {
-    border-radius: 0.75rem;
-    padding: 0.85rem 1rem;
-    font-size: 0.8rem;
-    line-height: 1.7;
-  }
-
-  /* System message */
-  .system-role {
-    color: #f59e0b;
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.15);
-  }
-
-  .system-bubble {
-    background: rgba(245, 158, 11, 0.04);
-    border: 1px solid rgba(245, 158, 11, 0.1);
-    border-top-left-radius: 0.25rem;
-    color: #94a3b8;
-  }
-
-  /* User message */
-  .user-message {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  .user-role {
-    color: #3b82f6;
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid rgba(59, 130, 246, 0.15);
-  }
-
-  .user-bubble {
-    background: rgba(59, 130, 246, 0.08);
-    border: 1px solid rgba(59, 130, 246, 0.12);
-    border-top-right-radius: 0.25rem;
-    color: #cbd5e1;
-    display: inline-block;
-    max-width: 80%;
-  }
-
-  /* Agent message */
-  .agent-role {
-    color: #8b5cf6;
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.15);
-  }
-
-  .typing-indicator {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    margin-left: 4px;
-  }
-
-  .typing-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #8b5cf6;
-    animation: typing-bounce 1.4s ease-in-out infinite;
-  }
-
-  .typing-dot:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .typing-dot:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-
   @keyframes typing-bounce {
     0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
     30% { opacity: 1; transform: translateY(-3px); }
-  }
-
-  /* Tool calls */
-  .tool-call {
-    background: #13102a;
-    border: 1px solid #1e1b3a;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: all 0.25s ease;
-  }
-
-  .tool-call:hover {
-    border-color: rgba(139, 92, 246, 0.25);
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.04);
-  }
-
-  .tool-header {
-    background: rgba(139, 92, 246, 0.06);
-    border-bottom: 1px solid #1e1b3a;
-    color: #8b5cf6;
-  }
-
-  .tool-name {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #a78bfa;
-  }
-
-  .tool-badge {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.55rem;
-    color: #8b5cf6;
-    background: rgba(139, 92, 246, 0.1);
-    padding: 0.1rem 0.4rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    margin-left: auto;
-  }
-
-  .tool-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-
-  .tool-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.75rem;
-    background: #0d0b1a;
-    border: 1px solid #1e1635;
-    border-radius: 0.5rem;
-    transition: all 0.2s ease;
-    cursor: default;
-  }
-
-  .tool-item:hover {
-    background: #1a1535;
-    border-color: #8b5cf6;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
-  }
-
-  .tool-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-  }
-
-  .tool-item-name {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: #cbd5e1;
-  }
-
-  .tool-check {
-    color: #8b5cf6;
-    opacity: 0.5;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-  }
-
-  .tool-item:hover .tool-check {
-    opacity: 1;
-  }
-
-  /* Input bar */
-  .chat-input {
-    background: #110e20;
-    border-top: 1px solid #1e1635;
-  }
-
-  .input-field {
-    background: #0d0b1a;
-    border: 1px solid #1e1635;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .input-icon {
-    color: #8b5cf6;
-    opacity: 0.5;
-  }
-
-  .input-placeholder {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.72rem;
-    color: #3d3559;
-  }
-
-  .input-hint {
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.6rem;
-    color: #64748b;
-  }
-
-  /* Responsive */
-  @media (max-width: 640px) {
-    .chat-online {
-      display: none;
-    }
-
-    .chat-subtitle {
-      display: none;
-    }
-
-    .chat-separator {
-      display: none;
-    }
-
-    .system-bubble,
-    .user-bubble {
-      font-size: 0.72rem;
-    }
-
-    .user-bubble {
-      max-width: 100%;
-    }
-
-    .tool-item-name {
-      font-size: 0.7rem;
-    }
-
-    .input-hint {
-      display: none;
-    }
   }
 </style>

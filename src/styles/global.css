@@ -92,6 +92,10 @@
   --tracking-normal: 0em;
   --spacing: 4px;
 
+  --text-2xs: 0.625rem;
+  --text-3xs: 0.5625rem;
+  --text-4xs: 0.5rem;
+
   --color-primary-50: oklch(96.06% 0.018 296.07);
   --color-primary-100: oklch(93.05% 0.037 296.05);
   --color-primary-200: oklch(87.33% 0.072 296.15);

@@ -149,10 +149,10 @@ const socials = [
 
 <section data-slot="hero" class="hero-section relative min-h-screen overflow-hidden">
   <!-- Animated gradient background -->
-  <div class="hero-bg absolute inset-0 -z-10">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+  <div class="absolute inset-0 -z-10 bg-background">
+    <div class="absolute rounded-full blur-[80px] opacity-40 w-[600px] h-[600px] bg-primary-300 -top-[200px] -right-[100px]"></div>
+    <div class="absolute rounded-full blur-[80px] opacity-40 w-[500px] h-[500px] bg-secondary-300 -bottom-[150px] -left-[100px]"></div>
+    <div class="absolute rounded-full blur-[80px] opacity-20 w-[400px] h-[400px] bg-primary-400 top-[calc(50%-200px)] left-[calc(50%-200px)]"></div>
   </div>
 
   <div class="relative z-10 mx-auto max-w-6xl px-6 pt-16 pb-12 flex flex-col gap-16">
@@ -162,16 +162,16 @@ const socials = [
       <div class="hero-left flex-1 flex flex-col gap-6 text-center lg:text-left">
         <div class="inline-flex items-center gap-3 self-center lg:self-start">
           <span class="relative flex h-3 w-3">
-            <span class="relative inline-flex h-3 w-3 rounded-full hero-gradient-dot"></span>
+            <span class="relative inline-flex h-3 w-3 rounded-full bg-linear-to-br from-primary to-secondary"></span>
           </span>
-          <span class="text-2xl font-black tracking-tight hero-gradient-text">14+</span>
+          <span class="text-2xl font-black tracking-tight bg-[linear-gradient(135deg,var(--color-primary)_0%,var(--color-primary-500)_30%,var(--color-secondary)_70%,var(--color-secondary-400)_100%)] bg-clip-text text-transparent">14+</span>
           <Small class="tracking-wider uppercase text-muted-foreground">years crafting digital products</Small>
         </div>
 
         <div>
           <H1 class="hero-name text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-none">
             <span class="block">Franck</span>
-            <span class="block hero-gradient-text uppercase">Diomande</span>
+            <span class="block uppercase bg-[linear-gradient(135deg,var(--color-primary)_0%,var(--color-primary-500)_30%,var(--color-secondary)_70%,var(--color-secondary-400)_100%)] bg-clip-text text-transparent">Diomande</span>
           </H1>
         </div>
 
@@ -216,7 +216,7 @@ const socials = [
 
           <!-- Avatar -->
           <div class="relative flex items-center justify-center">
-            <div class="avatar-ring relative rounded-full p-1">
+            <div class="relative rounded-full p-1 bg-[linear-gradient(135deg,var(--color-primary)_0%,var(--color-secondary)_50%,var(--color-primary)_100%)]">
               <Avatar size="xl" class="size-44! sm:size-48! lg:size-56! ring-2 ring-white/20">
                 <AvatarImage src={profileImage.src} alt="Franck Diomande" />
               </Avatar>
@@ -234,7 +234,7 @@ const socials = [
           <Muted class="text-2xs font-semibold tracking-widest opacity-60">{label}</Muted>
           <div class="flex items-center -space-x-2">
             {icons.map(({ icon, name }) => (
-              <div class="tech-icon group relative size-12 rounded-full border border-card-ring bg-card flex items-center justify-center transition-all duration-300 hover:z-10 hover:scale-125 hover:-translate-y-1" title={name}>
+              <div class="group relative size-12 rounded-full border border-card-ring bg-card flex items-center justify-center shadow-none transition-all duration-300 hover:z-10 hover:scale-125 hover:-translate-y-1" title={name}>
                 <Image src={icon} alt={name} width={24} height={24} />
               </div>
             ))}
@@ -274,74 +274,3 @@ const socials = [
   </div>
 </section>
 
-<style>
-  .hero-bg {
-    background: var(--color-background);
-  }
-
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
-  }
-
-  .orb-1 {
-    width: 600px;
-    height: 600px;
-    background: var(--color-primary-300);
-    top: -200px;
-    right: -100px;
-  }
-
-  .orb-2 {
-    width: 500px;
-    height: 500px;
-    background: var(--color-secondary-300);
-    bottom: -150px;
-    left: -100px;
-  }
-
-  .orb-3 {
-    width: 400px;
-    height: 400px;
-    background: var(--color-primary-400);
-    top: calc(50% - 200px);
-    left: calc(50% - 200px);
-    opacity: 0.2;
-  }
-
-  .hero-gradient-text {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-primary-500) 30%,
-      var(--color-secondary) 70%,
-      var(--color-secondary-400) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hero-gradient-dot {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-secondary) 100%
-    );
-  }
-
-  .avatar-ring {
-    background: linear-gradient(
-      135deg,
-      var(--color-primary) 0%,
-      var(--color-secondary) 50%,
-      var(--color-primary) 100%
-    );
-  }
-
-  .tech-icon {
-    box-shadow: none;
-  }
-</style>
