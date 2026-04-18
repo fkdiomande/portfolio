@@ -372,14 +372,24 @@ const experiences = [
         </svg>
         Back to portfolio
       </a>
-      <button id="print-btn" type="button" class="resume-btn resume-btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="6 9 6 2 18 2 18 9" />
-          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-          <rect x="6" y="14" width="12" height="8" rx="1" />
-        </svg>
-        Print / Save as PDF
-      </button>
+      <div class="resume-actions-right">
+        <button id="print-btn" type="button" class="resume-btn resume-btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 6 2 18 2 18 9" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <rect x="6" y="14" width="12" height="8" rx="1" />
+          </svg>
+          Print
+        </button>
+        <button id="download-btn" type="button" class="resume-btn resume-btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span data-download-label>Download PDF</span>
+        </button>
+      </div>
     </div>
 
     <article class="resume-sheet">
@@ -665,7 +675,18 @@ const experiences = [
     margin: 0 auto 16px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 12px;
+  }
+
+  .resume-actions-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .resume-btn[disabled] {
+    opacity: 0.6;
+    cursor: wait;
   }
 
   .resume-btn {
@@ -1604,6 +1625,66 @@ const experiences = [
 </style>
 
 <script>
-  const btn = document.getElementById("print-btn");
-  btn?.addEventListener("click", () => window.print());
+  import html2canvas from "html2canvas-pro";
+  import { jsPDF } from "jspdf";
+
+  const printBtn = document.getElementById("print-btn");
+  printBtn?.addEventListener("click", () => window.print());
+
+  const downloadBtn = document.getElementById("download-btn") as HTMLButtonElement | null;
+  const label = downloadBtn?.querySelector("[data-download-label]");
+  const defaultLabel = label?.textContent ?? "Download PDF";
+
+  downloadBtn?.addEventListener("click", async () => {
+    const sheet = document.querySelector<HTMLElement>(".resume-sheet");
+    if (!sheet) return;
+
+    downloadBtn.disabled = true;
+    if (label) label.textContent = "Generating…";
+
+    const originalPadding = sheet.style.padding;
+    sheet.style.padding = "6mm 8mm";
+
+    try {
+      const canvas = await html2canvas(sheet, {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        logging: false,
+        imageTimeout: 0,
+      });
+
+      const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 0;
+      const imgWidth = pageWidth - margin * 2;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const contentHeight = pageHeight - margin * 2;
+      const imgData = canvas.toDataURL("image/png");
+
+      let heightLeft = imgHeight;
+      let position = margin;
+
+      pdf.addImage(imgData, "PNG", margin, position, imgWidth, imgHeight, undefined, "FAST");
+      heightLeft -= contentHeight;
+
+      while (heightLeft > 0) {
+        position = margin - (imgHeight - heightLeft);
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", margin, position, imgWidth, imgHeight, undefined, "FAST");
+        heightLeft -= contentHeight;
+      }
+
+      pdf.save("Franck-Diomande-Resume.pdf");
+    } catch (err) {
+      console.error("PDF generation failed", err);
+      const msg = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+      alert(`PDF generation failed.\n\n${msg}\n\nCheck the browser console for the full stack trace.`);
+    } finally {
+      sheet.style.padding = originalPadding;
+      downloadBtn.disabled = false;
+      if (label) label.textContent = defaultLabel;
+    }
+  });
 </script>
