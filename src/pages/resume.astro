@@ -11,7 +11,7 @@ const profile = {
     "Fullstack engineer with 14+ years building production-grade web applications end-to-end. I design, ship, and lead — combining strong front-end craft, resilient back-end architecture, and modern AI/agentic systems. Comfortable owning the stack from React UIs to cloud infrastructure on AWS, and equally at home shaping product direction with stakeholders or mentoring engineers in code review.",
   contact: {
     email: "fkdiomande@icloud.com",
-    location: "Paris, France",
+    website: "fkdiomande.com",
     github: "github.com/fkdiomande",
     linkedin: "linkedin.com/in/fkdiomande",
   },
@@ -27,7 +27,7 @@ const highlights = [
 
 const languages = [
   { name: "French", level: "Native" },
-  { name: "English", level: "Professional" },
+  { name: "English", level: "Fluent" },
 ];
 
 const coreSkills = [
@@ -262,10 +262,11 @@ const experiences = [
           </li>
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-              <circle cx="12" cy="10" r="3" />
+              <circle cx="12" cy="12" r="10" />
+              <path d="M2 12h20" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
             </svg>
-            <span>{profile.contact.location}</span>
+            <a href={`https://${profile.contact.website}`} target="_blank" rel="noopener noreferrer">{profile.contact.website}</a>
           </li>
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -527,7 +528,7 @@ const experiences = [
     letter-spacing: -0.02em;
     line-height: 1;
     margin: 0;
-    color: var(--resume-fg);
+    color: var(--color-primary);
     text-transform: uppercase;
   }
 
@@ -802,7 +803,7 @@ const experiences = [
     font-size: 14px;
     font-weight: 800;
     letter-spacing: -0.01em;
-    color: var(--resume-accent);
+    color: var(--color-primary);
   }
 
   .resume-exp-field {
