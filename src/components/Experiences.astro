@@ -187,13 +187,13 @@ const experiences = [
               </svg>
               Tech Stack
             </Small>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-2">
               {exp.tech.map(({ icon, name }) => (
-                <div class="flex items-center gap-[0.6rem] px-4 py-2 bg-card text-card-foreground rounded-[var(--radius)] shadow-[0_0_0_0.4px_var(--color-card-ring)] transition-all duration-[0.25s] cursor-default hover:shadow-[0_0_0_0.4px_var(--color-ring-alt)] hover:-translate-y-0.5">
-                  <div class="flex items-center justify-center w-7 h-7">
-                    <Image src={icon} alt={name} width={28} height={28} />
+                <div class="flex items-center gap-2 px-2.5 py-1.5 bg-card text-card-foreground rounded-[var(--radius)] shadow-[0_0_0_0.4px_var(--color-card-ring)] transition-all duration-[0.25s] cursor-default hover:shadow-[0_0_0_0.4px_var(--color-ring-alt)] hover:-translate-y-0.5">
+                  <div class="flex items-center justify-center w-5 h-5">
+                    <Image src={icon} alt={name} width={20} height={20} />
                   </div>
-                  <span class="font-mono text-[0.8rem] font-semibold max-sm:text-[0.72rem]">{name}</span>
+                  <span class="font-mono text-[0.72rem] font-semibold max-sm:text-[0.66rem]">{name}</span>
                 </div>
               ))}
             </div>
