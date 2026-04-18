@@ -1,13 +1,18 @@
 ---
 import { Image } from "astro:assets";
+import airLiquideLogo from "@/assets/companies/air-liquide.svg";
+import deltaRmLogo from "@/assets/companies/delta-rm.png";
 import mataLogo from "@/assets/companies/mata.svg";
+import metaLogo from "@/assets/companies/meta.svg";
 import ooneexLogo from "@/assets/companies/ooneex.svg";
+import wiztrustLogo from "@/assets/companies/wiztrust.png";
 import awsIcon from "@/assets/tech/expertise/aws.svg";
 import dockerIcon from "@/assets/tech/expertise/docker.svg";
 import langchainIcon from "@/assets/tech/expertise/langchain.svg";
 import nodeIcon from "@/assets/tech/expertise/node.js.svg";
 import pythonIcon from "@/assets/tech/expertise/python.svg";
 import reactIcon from "@/assets/tech/expertise/react.svg";
+import sqlIcon from "@/assets/tech/expertise/sql.svg";
 import tailwindIcon from "@/assets/tech/expertise/tailwindcss.svg";
 import terraformIcon from "@/assets/tech/expertise/terraform.svg";
 import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
@@ -93,6 +98,135 @@ const experiences = [
       { icon: awsIcon, name: "AWS" },
       { icon: terraformIcon, name: "Terraform" },
       { icon: langchainIcon, name: "LangChain" },
+    ],
+  },
+  {
+    logo: deltaRmLogo,
+    company: "Delta RM",
+    position: "Lead Developer",
+    period: "2014 — 2018",
+    duration: "4 years",
+    field: "GRC / SaaS",
+    description:
+      "Delta RM is a French SaaS GRC platform that centralizes and digitalizes enterprise risk management — risk mapping, incidents, insurance, internal control, audit and prevention — in a powerful, secure and highly configurable tool. Built “by risk managers for risk managers”, it serves companies of all sizes with unlimited usage, strong data security in France, rich integrations, and collaborative features designed to improve decision-making and risk culture.",
+    features: [
+      "Built a risk mapping module for enterprise-wide risk identification, analysis, and interactive dashboards",
+      "Developed an incident and claims management system with full lifecycle tracking and reporting",
+      "Engineered an insurance management module covering policies, coverages, and linked risks",
+      "Implemented risk prevention action plans with assignment, deadlines, and follow-up workflows",
+      "Created an internal control engine supporting level 1 and level 2 controls with evidence collection",
+      "Delivered an internal audit module for audit planning, execution, findings, and recommendation tracking",
+    ],
+    skills: [
+      "GRC domain modeling & risk engines",
+      "Highly configurable multi-tenant SaaS",
+      "Compliance-grade data security",
+      "Workflow & approval system design",
+      "Collaborative enterprise tooling",
+    ],
+    tech: [
+      { icon: reactIcon, name: "React" },
+      { icon: pythonIcon, name: "Python" },
+      { icon: nodeIcon, name: "Node.js" },
+      { icon: dockerIcon, name: "Docker" },
+      { icon: awsIcon, name: "AWS" },
+    ],
+  },
+  {
+    logo: wiztrustLogo,
+    company: "Wiztrust",
+    position: "Lead Developer",
+    period: "2010 — 2014",
+    duration: "4 years",
+    field: "PR Tech / SaaS",
+    description:
+      "Wiztrust is an all-in-one, GDPR-compliant PR and communications platform that helps corporate communication teams manage newsrooms, media databases, multichannel press distribution, and performance analytics. Its Wiztrust Protect module leverages blockchain certification to secure and verify corporate information, fighting misinformation and strengthening trust with media, investors, and stakeholders.",
+    features: [
+      "Built an all-in-one PR management platform unifying newsrooms, CRM, campaigns, emailing, newswires, social media, and media monitoring with personalized press reviews",
+      "Developed customizable, SEO- and GEO-optimized newsrooms tuned for search engines and generative engines, meeting banking- and insurance-grade security standards",
+      "Engineered Wiztrust Protect to certify and timestamp corporate content on blockchain, proving authenticity and reducing corporate liability against fake news",
+      "Created a public one-click verification portal enabling journalists and investors to instantly validate the origin and integrity of corporate information",
+      "Implemented the Wiztrust Data analytics suite combining automated and human-curated insights with quarterly dashboards and KPIs to measure communication ROI",
+      "Delivered enterprise-grade compliance and security — full GDPR, EU hosting on Google Cloud, SSO, granular roles, and high SLAs for listed companies and financial institutions",
+    ],
+    skills: [
+      "Blockchain certification & content integrity",
+      "Multichannel distribution & CRM workflows",
+      "SEO / GEO optimization for newsrooms",
+      "GDPR compliance & enterprise security",
+      "Analytics pipelines & KPI dashboards",
+    ],
+    tech: [
+      { icon: reactIcon, name: "React" },
+      { icon: nodeIcon, name: "Node.js" },
+      { icon: pythonIcon, name: "Python" },
+      { icon: awsIcon, name: "AWS" },
+    ],
+  },
+  {
+    logo: airLiquideLogo,
+    company: "Air Liquide",
+    position: "Lead Developer",
+    period: "2006 — 2010",
+    duration: "4 years",
+    field: "Industry / Healthcare",
+    description:
+      "Air Liquide is a global leader in industrial and medical gases, technologies, and related services, operating in 59 countries and serving over 4 million customers and patients. The group supports key sectors like industry, healthcare, energy transition, and semiconductors, combining strong financial performance with sustainability goals such as reducing CO₂ emissions and improving healthcare access worldwide.",
+    features: [
+      "Built internal platforms for a world leader in gases, technologies and services operating at scale across industry and healthcare",
+      "Engineered multi-region applications supporting operations across 59 countries and a workforce of roughly 65,000 employees",
+      "Developed customer and patient portals serving a base of over 4 million users worldwide",
+      "Implemented tooling around core molecules and technologies — oxygen, nitrogen, hydrogen, CO₂ — for industry, energy transition, and health",
+      "Delivered financial and investment dashboards tracking multi-billion-euro sales, net income, and capital allocation decisions",
+      "Created sustainability reporting modules tracking CO₂ reduction targets and extra-financial commitments across environment, health, and inclusion",
+      "Contributed to R&D tooling supporting 5,600+ researchers, patent pipelines, and heavy data and digital initiatives",
+      "Built sector-specific integrations spanning multinationals, semiconductors, hospitals, and local craftspeople",
+    ],
+    skills: [
+      "Enterprise-scale multi-region platforms",
+      "Industrial & healthcare domain modeling",
+      "Sustainability & ESG reporting",
+      "High-availability customer portals",
+      "Data-intensive R&D tooling",
+    ],
+    tech: [
+      { icon: reactIcon, name: "React" },
+      { icon: nodeIcon, name: "Node.js" },
+      { icon: pythonIcon, name: "Python" },
+      { icon: awsIcon, name: "AWS" },
+    ],
+  },
+  {
+    logo: metaLogo,
+    company: "Facebook",
+    position: "Software Engineer",
+    period: "2003 — 2006",
+    duration: "3 years",
+    field: "Big Tech",
+    description:
+      "During my academic journey, I had the privilege of joining Facebook as part of my engineering curriculum. Working alongside some of the industry's finest engineers, I gained invaluable insights into cutting-edge technologies and honed my skills in collaboration and knowledge sharing. After three enriching years, I joined the back-office team to help develop and improve the company's internal tools, gaining deep exposure to international, multidisciplinary teamwork, agile methodologies, and complex problem-solving in a dynamic professional environment.",
+    features: [
+      "Contributed to R&D initiatives alongside senior engineers, exploring cutting-edge technologies and patterns",
+      "Designed and implemented algorithms powering back-office tooling and data-processing pipelines",
+      "Built internal APIs and integrated a wide range of external APIs across the back-office ecosystem",
+      "Authored technical documentation for internal tools to accelerate team onboarding and knowledge sharing",
+      "Added new features to existing internal tools within a 80-engineer international team",
+      "Wired microservices into official APIs and implemented a scalable microservices architecture",
+      "Optimized application performance and hardened security across back-office services",
+      "Collaborated closely with international development teams using agile methodologies",
+    ],
+    skills: [
+      "Low-level programming in C",
+      "Microservices architecture & API design",
+      "Algorithm design & performance tuning",
+      "Large-team agile collaboration",
+      "Technical documentation & knowledge sharing",
+    ],
+    tech: [
+      { icon: reactIcon, name: "React" },
+      { icon: nodeIcon, name: "Node.js" },
+      { icon: pythonIcon, name: "Python" },
+      { icon: sqlIcon, name: "SQL" },
     ],
   },
 ] as const;
