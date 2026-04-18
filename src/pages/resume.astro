@@ -1,0 +1,1033 @@
+---
+import { Image } from "astro:assets";
+import profileImage from "@/assets/franck-diomande.jpeg";
+import Layout from "@/layouts/Layout.astro";
+
+const profile = {
+  name: "Franck DIOMANDE",
+  title: "Fullstack Web Developer",
+  yearsOfExperience: "14+ years",
+  summary:
+    "Fullstack engineer with 14+ years building production-grade web applications end-to-end. I design, ship, and lead — combining strong front-end craft, resilient back-end architecture, and modern AI/agentic systems. Comfortable owning the stack from React UIs to cloud infrastructure on AWS, and equally at home shaping product direction with stakeholders or mentoring engineers in code review.",
+  contact: {
+    email: "fkdiomande@icloud.com",
+    location: "Paris, France",
+    github: "github.com/fkdiomande",
+    linkedin: "linkedin.com/in/fkdiomande",
+  },
+};
+
+const highlights = [
+  { metric: "€2.4B", label: "AUM platform tooling at Mata Capital across France & Germany" },
+  { metric: "4M+", label: "Users served via Air Liquide patient & customer portals" },
+  { metric: "59", label: "Countries supported by Air Liquide multi-region apps" },
+  { metric: "80+", label: "Engineers in international agile team at Facebook" },
+  { metric: "70+", label: "Decision-makers using Mata Capital data tools" },
+];
+
+const languages = [
+  { name: "French", level: "Native" },
+  { name: "English", level: "Professional" },
+];
+
+const coreSkills = [
+  { title: "Front-End", description: "Performant, accessible, design-system-driven UIs" },
+  { title: "Back-End", description: "Robust APIs, secure services, scalable data layers" },
+  { title: "AI & Agent", description: "RAG, multi-agent systems, LLM routing & orchestration" },
+  { title: "Dev & Ops", description: "Cloud infra, CI/CD, IaC, container orchestration" },
+  { title: "Leader", description: "Mentoring engineers, code review, technical direction" },
+  { title: "Tools", description: "Figma, Sketch, Jira, Notion, Linear" },
+];
+
+const techStack = [
+  { label: "Languages", items: ["TypeScript", "JavaScript", "Python", "SQL", "HTML", "CSS"] },
+  { label: "Front-End", items: ["React", "Tailwind CSS", "Vite", "Astro"] },
+  { label: "Back-End", items: ["Node.js", "NestJS", "FastAPI", "REST APIs", "Microservices"] },
+  { label: "Databases", items: ["PostgreSQL", "MongoDB", "Cassandra", "Redis", "RabbitMQ"] },
+  { label: "DevOps & Cloud", items: ["Docker", "Kubernetes", "AWS", "Terraform", "GitHub Actions"] },
+  { label: "AI & Agentic", items: ["LangChain", "CrewAI", "OpenRouter", "LanceDB", "Pinecone", "RAG", "MCP"] },
+  { label: "Testing", items: ["Jest", "Bun test", "PyTest", "Vitest"] },
+];
+
+const softSkills = [
+  "Adaptability",
+  "Collaboration",
+  "Problem-Solving",
+  "Organization & Planning",
+  "Creativity & Design Thinking",
+];
+
+const experiences = [
+  {
+    company: "Ooneex",
+    position: "Lead Developer",
+    period: "Oct 2024 — Mar 2026",
+    field: "EdTech / SaaS",
+    context: ["Vertical SaaS", "Medical education", "Multi-tenant", "AI-assisted"],
+    description:
+      "Vertical SaaS platform for medical education unifying content management, scheduling, assessments, and analytics into a single classroom workspace — empowering educators and students to organize, study, and track entire courses from one place.",
+    features: [
+      "Built an interactive classroom dashboard providing high-level course overviews with year-level tagging, ownership, and participant management.",
+      "Developed a rich resource library supporting books, videos, images, notes, MCQ decks, flashcard decks, and clinical case decks with AI-powered chat.",
+      "Engineered an agenda and events management system for tutorials, labs, workshops, and exams with priority tracking and weekly analytics.",
+      "Implemented a folder-based content organization system with per-topic resource counts, favorites, and granular access control.",
+      "Created a resource analytics engine with format distribution charts and top-folder rankings.",
+      "Designed a credits-based monetization system separating free and premium content folders.",
+    ],
+    skills: [
+      "SaaS architecture & multi-tenant design",
+      "AI integration (RAG, conversational agents)",
+      "Real-time data analytics & dashboards",
+      "Payment & credits system design",
+      "Team leadership & code review",
+    ],
+    tech: ["React", "Tailwind CSS", "TypeScript", "Node.js", "Python", "Docker", "AWS", "Terraform", "LangChain"],
+  },
+  {
+    company: "Mata Capital",
+    position: "Lead Developer",
+    period: "Sep 2020 — Oct 2024",
+    field: "Real Estate / FinTech",
+    context: ["~€2.4B AUM", "France & Germany", "Paris · Lyon · Hamburg", "70+ professionals served"],
+    description:
+      "Independent real estate investment firm managing ~€2.4B in assets across France and Germany — combining investment management, investor solutions, and asset management with a strong focus on innovation, ESG, and long-term value creation.",
+    features: [
+      "Built internal tools for an independent, management-owned investment firm operating with full strategic autonomy across fund decisions.",
+      "Developed an integrated asset management platform covering the entire value chain — acquisition, active management, property operations, and disposal.",
+      "Engineered cross-border investment workflows supporting the Franco-German positioning with offices in Paris, Lyon, and Hamburg.",
+      "Implemented portfolio dashboards for three distinct strategies: Core Plus (€1.4B), Value-Added (€810M), and Private Equity Real Estate (€150M).",
+      "Created data-driven decision tools leveraging advanced analytics to optimize operational management across 70+ professionals.",
+      "Built ESG reporting and responsible investing modules integrating sustainability metrics at the heart of investment strategies.",
+    ],
+    skills: [
+      "Financial data modeling & portfolio analytics",
+      "Cross-border compliance workflows",
+      "ESG reporting & sustainability tracking",
+      "Data-driven decision support tools",
+      "Scalable architecture for regulated environments",
+    ],
+    tech: ["React", "Tailwind CSS", "TypeScript", "Node.js", "Python", "Docker", "AWS", "Terraform", "LangChain"],
+  },
+  {
+    company: "Delta RM",
+    position: "Lead Developer",
+    period: "Jan 2019 — Sep 2020",
+    field: "GRC / SaaS",
+    context: ["French SaaS GRC", "Highly configurable", "Compliance-grade security", "Built by risk managers"],
+    description:
+      "French SaaS GRC platform that centralizes and digitalizes enterprise risk management — risk mapping, incidents, insurance, internal control, audit, and prevention — in a powerful, secure, and highly configurable tool.",
+    features: [
+      "Built a risk mapping module for enterprise-wide risk identification, analysis, and interactive dashboards.",
+      "Developed an incident and claims management system with full lifecycle tracking and reporting.",
+      "Engineered an insurance management module covering policies, coverages, and linked risks.",
+      "Implemented risk prevention action plans with assignment, deadlines, and follow-up workflows.",
+      "Created an internal control engine supporting level 1 and level 2 controls with evidence collection.",
+      "Delivered an internal audit module for audit planning, execution, findings, and recommendation tracking.",
+    ],
+    skills: [
+      "GRC domain modeling & risk engines",
+      "Highly configurable multi-tenant SaaS",
+      "Compliance-grade data security",
+      "Workflow & approval system design",
+      "Collaborative enterprise tooling",
+    ],
+    tech: ["React", "Python", "Node.js", "Docker", "AWS"],
+  },
+  {
+    company: "Air Liquide",
+    position: "Senior Developer — Freelance",
+    period: "Jan 2018 — Sep 2019",
+    field: "Industry / Healthcare",
+    context: ["59 countries", "65,000 employees", "4M+ end users", "5,600+ researchers supported"],
+    description:
+      "Global leader in industrial and medical gases, technologies, and related services, operating in 59 countries and serving over 4 million customers and patients across industry, healthcare, energy transition, and semiconductors.",
+    features: [
+      "Built internal platforms for a world leader in gases, technologies, and services operating at scale across industry and healthcare.",
+      "Engineered multi-region applications supporting operations across 59 countries and a workforce of roughly 65,000 employees.",
+      "Developed customer and patient portals serving a base of over 4 million users worldwide.",
+      "Implemented tooling around core molecules — oxygen, nitrogen, hydrogen, CO₂ — for industry, energy transition, and health.",
+      "Delivered financial and investment dashboards tracking multi-billion-euro sales, net income, and capital allocation decisions.",
+      "Created sustainability reporting modules tracking CO₂ reduction targets and extra-financial commitments across environment, health, and inclusion.",
+      "Contributed to R&D tooling supporting 5,600+ researchers, patent pipelines, and heavy data and digital initiatives.",
+    ],
+    skills: [
+      "Enterprise-scale multi-region platforms",
+      "Industrial & healthcare domain modeling",
+      "Sustainability & ESG reporting",
+      "High-availability customer portals",
+      "Data-intensive R&D tooling",
+    ],
+    tech: ["React", "Node.js", "Python", "AWS"],
+  },
+  {
+    company: "Facebook",
+    position: "Software Engineer",
+    period: "Sep 2012 — Oct 2017",
+    field: "Big Tech",
+    context: ["80-engineer team", "International collaboration", "Back-office tooling", "Agile / R&D"],
+    description:
+      "Joined as part of an engineering curriculum and worked alongside senior engineers, then moved to the back-office team to develop and improve internal tooling within an 80-engineer international team — gaining deep exposure to agile methodologies and complex problem-solving in a dynamic environment.",
+    features: [
+      "Contributed to R&D initiatives alongside senior engineers, exploring cutting-edge technologies and patterns.",
+      "Designed and implemented algorithms powering back-office tooling and data-processing pipelines.",
+      "Built internal APIs and integrated a wide range of external APIs across the back-office ecosystem.",
+      "Authored technical documentation for internal tools to accelerate team onboarding and knowledge sharing.",
+      "Wired microservices into official APIs and implemented a scalable microservices architecture.",
+      "Optimized application performance and hardened security across back-office services.",
+      "Collaborated closely with international development teams using agile methodologies.",
+    ],
+    skills: [
+      "Low-level programming in C",
+      "Microservices architecture & API design",
+      "Algorithm design & performance tuning",
+      "Large-team agile collaboration",
+      "Technical documentation & knowledge sharing",
+    ],
+    tech: ["React", "Node.js", "Python", "SQL"],
+  },
+  {
+    company: "Wiztrust",
+    position: "Software Engineer",
+    period: "Oct 2011 — Sep 2012",
+    field: "PR Tech / SaaS",
+    context: ["GDPR-compliant", "EU hosting", "Listed-company clients", "Blockchain certification"],
+    description:
+      "All-in-one, GDPR-compliant PR and communications platform helping corporate communication teams manage newsrooms, media databases, multichannel press distribution, and performance analytics — with blockchain-backed certification of corporate information.",
+    features: [
+      "Built an all-in-one PR management platform unifying newsrooms, CRM, campaigns, emailing, newswires, social media, and media monitoring with personalized press reviews.",
+      "Developed customizable, SEO- and GEO-optimized newsrooms tuned for search and generative engines, meeting banking-grade security standards.",
+      "Engineered Wiztrust Protect to certify and timestamp corporate content on blockchain, proving authenticity and reducing corporate liability against fake news.",
+      "Created a public one-click verification portal enabling journalists and investors to instantly validate the origin of corporate information.",
+      "Implemented the Wiztrust Data analytics suite combining automated and human-curated insights with quarterly KPI dashboards.",
+      "Delivered enterprise-grade compliance and security — full GDPR, EU hosting, SSO, granular roles, and high SLAs for listed companies.",
+    ],
+    skills: [
+      "Blockchain certification & content integrity",
+      "Multichannel distribution & CRM workflows",
+      "SEO / GEO optimization for newsrooms",
+      "GDPR compliance & enterprise security",
+      "Analytics pipelines & KPI dashboards",
+    ],
+    tech: ["React", "Node.js", "Python", "AWS"],
+  },
+];
+---
+
+<Layout>
+  <main class="resume-page">
+    <!-- Action bar (hidden in print) -->
+    <div class="resume-actions print:hidden">
+      <a href="/" class="resume-btn resume-btn-ghost" aria-label="Back to portfolio">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+        Back to portfolio
+      </a>
+      <button id="print-btn" type="button" class="resume-btn resume-btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 6 2 18 2 18 9" />
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+          <rect x="6" y="14" width="12" height="8" rx="1" />
+        </svg>
+        Print / Save as PDF
+      </button>
+    </div>
+
+    <article class="resume-sheet">
+      <!-- Header -->
+      <header class="resume-header">
+        <div class="resume-header-left">
+          <div class="resume-avatar">
+            <Image
+              src={profileImage}
+              alt={profile.name}
+              width={120}
+              height={120}
+            />
+          </div>
+          <div class="resume-identity">
+            <h1 class="resume-name">{profile.name}</h1>
+            <p class="resume-title">{profile.title}</p>
+            <p class="resume-tagline">{profile.yearsOfExperience} crafting digital products</p>
+          </div>
+        </div>
+        <ul class="resume-contact">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>{profile.contact.location}</span>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.16c-3.2.7-3.88-1.37-3.88-1.37-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5Z" />
+            </svg>
+            <a href={`https://${profile.contact.github}`} target="_blank" rel="noopener noreferrer">{profile.contact.github}</a>
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0Z" />
+            </svg>
+            <a href={`https://${profile.contact.linkedin}`} target="_blank" rel="noopener noreferrer">{profile.contact.linkedin}</a>
+          </li>
+        </ul>
+      </header>
+
+      <!-- Overview: 2-column block -->
+      <div class="resume-overview">
+        <section class="resume-section">
+          <h2 class="resume-section-title">Profile</h2>
+          <p class="resume-summary">{profile.summary}</p>
+        </section>
+
+        <section class="resume-section">
+          <h2 class="resume-section-title">Highlights</h2>
+          <ul class="resume-highlight-list">
+            {highlights.map((h) => (
+              <li class="resume-highlight-item">
+                <span class="resume-highlight-metric">{h.metric}</span>
+                <span class="resume-highlight-label">{h.label}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2 class="resume-section-title">Core Skills</h2>
+          <ul class="resume-skill-list">
+            {coreSkills.map((skill) => (
+              <li class="resume-skill-item">
+                <span class="resume-skill-title">{skill.title}</span>
+                <span class="resume-skill-desc">{skill.description}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2 class="resume-section-title">Tech Stack</h2>
+          <ul class="resume-tech-list">
+            {techStack.map((group) => (
+              <li class="resume-tech-group">
+                <span class="resume-tech-label">{group.label}</span>
+                <span class="resume-tech-items">{group.items.join(" · ")}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2 class="resume-section-title">Soft Skills</h2>
+          <ul class="resume-soft-list">
+            {softSkills.map((skill) => (
+              <li>{skill}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="resume-section">
+          <h2 class="resume-section-title">Languages</h2>
+          <ul class="resume-language-list">
+            {languages.map((lang) => (
+              <li class="resume-language-item">
+                <span class="resume-language-name">{lang.name}</span>
+                <span class="resume-language-level">{lang.level}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <!-- Experience: full width -->
+      <section class="resume-main">
+        <h2 class="resume-section-title resume-section-title-main">Experience</h2>
+          <ol class="resume-experience">
+            {experiences.map((exp) => (
+              <li class="resume-experience-item">
+                <header class="resume-exp-header">
+                  <div class="resume-exp-heading">
+                    <div class="resume-exp-title-row">
+                      <h3 class="resume-exp-company">{exp.company}</h3>
+                      <span class="resume-exp-field">{exp.field}</span>
+                    </div>
+                    <div class="resume-exp-meta">
+                      <span class="resume-exp-position">{exp.position}</span>
+                      <span class="resume-exp-dot">·</span>
+                      <span class="resume-exp-period">{exp.period}</span>
+                    </div>
+                  </div>
+                </header>
+                <ul class="resume-exp-context">
+                  {exp.context.map((c) => (
+                    <li>{c}</li>
+                  ))}
+                </ul>
+
+                <p class="resume-exp-desc">{exp.description}</p>
+
+                <div class="resume-exp-block">
+                  <h4 class="resume-exp-subtitle">Key contributions</h4>
+                  <ul class="resume-exp-features">
+                    {exp.features.map((feature) => (
+                      <li>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="resume-exp-block">
+                  <h4 class="resume-exp-subtitle">Skills developed</h4>
+                  <div class="resume-exp-skills">
+                    {exp.skills.map((s) => (
+                      <span class="resume-exp-skill-chip">{s}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="resume-exp-block">
+                  <h4 class="resume-exp-subtitle">Tech stack</h4>
+                  <div class="resume-exp-tech">
+                    {exp.tech.map((t) => (
+                      <span class="resume-exp-tech-chip">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  /* Page-level */
+  .resume-page {
+    --resume-fg: #1f2233;
+    --resume-muted: #5a6076;
+    --resume-subtle: #8a90a3;
+    --resume-accent: oklch(0.5747 0.205 296.46);
+    --resume-accent-soft: oklch(0.93 0.037 296);
+    --resume-secondary: oklch(0.6684 0.1648 31.5743);
+    --resume-rule: #e3e5ee;
+    --resume-bg: #f3f4f8;
+    --resume-sheet-bg: #ffffff;
+
+    min-height: 100vh;
+    background: var(--resume-bg);
+    color: var(--resume-fg);
+    padding: 32px 16px 64px;
+    font-family: var(--font-sans);
+  }
+
+  /* Action bar */
+  .resume-actions {
+    max-width: 210mm;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    line-height: 1;
+  }
+
+  .resume-btn-ghost {
+    background: transparent;
+    color: var(--resume-muted);
+    border-color: var(--resume-rule);
+  }
+
+  .resume-btn-ghost:hover {
+    color: var(--resume-fg);
+    border-color: var(--resume-subtle);
+    background: #fff;
+  }
+
+  .resume-btn-primary {
+    background: var(--resume-accent);
+    color: #fff;
+  }
+
+  .resume-btn-primary:hover {
+    filter: brightness(1.08);
+  }
+
+  /* Sheet */
+  .resume-sheet {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: var(--resume-sheet-bg);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+    border-radius: 4px;
+    padding: 18mm 16mm;
+    box-sizing: border-box;
+  }
+
+  /* Header */
+  .resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--resume-accent);
+    margin-bottom: 16px;
+  }
+
+  .resume-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .resume-avatar {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--resume-accent-soft);
+  }
+
+  .resume-avatar :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .resume-identity {
+    min-width: 0;
+  }
+
+  .resume-name {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+    color: var(--resume-fg);
+    text-transform: uppercase;
+  }
+
+  .resume-title {
+    margin: 6px 0 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--resume-accent);
+  }
+
+  .resume-tagline {
+    margin: 0;
+    font-size: 11px;
+    color: var(--resume-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .resume-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--resume-muted);
+    flex: 0 0 auto;
+  }
+
+  .resume-contact li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .resume-contact svg {
+    flex: 0 0 auto;
+    color: var(--resume-accent);
+  }
+
+  .resume-contact a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .resume-contact a:hover {
+    color: var(--resume-accent);
+  }
+
+  /* Overview: 2-column block (everything except Experience) */
+  .resume-overview {
+    column-count: 2;
+    column-gap: 32px;
+    margin-bottom: 28px;
+  }
+
+  .resume-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .resume-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .resume-section-title {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--resume-accent);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--resume-rule);
+  }
+
+  .resume-section-title-main {
+    margin-bottom: 12px;
+  }
+
+  .resume-summary {
+    margin: 0;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--resume-fg);
+  }
+
+  .resume-skill-list,
+  .resume-tech-list,
+  .resume-soft-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .resume-skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .resume-skill-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--resume-fg);
+  }
+
+  .resume-skill-desc {
+    font-size: 10.5px;
+    color: var(--resume-muted);
+    line-height: 1.5;
+  }
+
+  .resume-tech-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .resume-tech-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--resume-secondary);
+  }
+
+  .resume-tech-items {
+    font-size: 11px;
+    color: var(--resume-fg);
+    line-height: 1.5;
+  }
+
+  .resume-soft-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .resume-soft-list li {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border: 1px solid var(--resume-rule);
+    border-radius: 999px;
+    color: var(--resume-fg);
+    background: #fafbfd;
+  }
+
+  /* Highlights */
+  .resume-highlight-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resume-highlight-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .resume-highlight-metric {
+    flex: 0 0 auto;
+    min-width: 44px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--resume-accent);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .resume-highlight-label {
+    font-size: 10.5px;
+    color: var(--resume-fg);
+    line-height: 1.45;
+  }
+
+  /* Languages */
+  .resume-language-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .resume-language-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--resume-rule);
+  }
+
+  .resume-language-item:last-child {
+    border-bottom: none;
+  }
+
+  .resume-language-name {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--resume-fg);
+  }
+
+  .resume-language-level {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--resume-muted);
+  }
+
+  /* Main column */
+  .resume-main {
+    min-width: 0;
+  }
+
+  .resume-experience {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .resume-experience-item {
+    padding: 4px 0 22px;
+    border-bottom: 1px solid var(--resume-rule);
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .resume-experience-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .resume-exp-header {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .resume-exp-heading {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .resume-exp-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .resume-exp-company {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--resume-accent);
+  }
+
+  .resume-exp-field {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--resume-accent);
+    background: var(--resume-accent-soft);
+    padding: 2px 7px;
+    border-radius: 999px;
+  }
+
+  .resume-exp-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+    font-size: 10.5px;
+    color: var(--resume-muted);
+  }
+
+  .resume-exp-position {
+    font-weight: 700;
+    color: var(--resume-secondary);
+  }
+
+  .resume-exp-dot {
+    color: var(--resume-subtle);
+  }
+
+  .resume-exp-period {
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+
+  /* Context strip */
+  .resume-exp-context {
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+
+  .resume-exp-context li {
+    position: relative;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--resume-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .resume-exp-context li:not(:last-child)::after {
+    content: "•";
+    position: absolute;
+    right: -10px;
+    color: var(--resume-subtle);
+    font-weight: 400;
+  }
+
+  .resume-exp-desc {
+    margin: 0 0 14px;
+    font-size: 11.5px;
+    line-height: 1.65;
+    color: var(--resume-fg);
+  }
+
+  /* Sub-blocks within an experience */
+  .resume-exp-block {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dotted var(--resume-rule);
+  }
+
+  .resume-exp-subtitle {
+    margin: 0 0 8px;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--resume-secondary);
+  }
+
+  .resume-exp-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .resume-exp-features li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--resume-fg);
+  }
+
+  .resume-exp-features li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--resume-secondary);
+  }
+
+  .resume-exp-skills,
+  .resume-exp-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .resume-exp-skill-chip {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--resume-accent-soft);
+    color: var(--resume-accent);
+    border: 1px solid var(--resume-accent-soft);
+  }
+
+  .resume-exp-tech-chip {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #fff;
+    color: var(--resume-fg);
+    border: 1px solid var(--resume-rule);
+  }
+
+  /* Responsive (screen) */
+  @media (max-width: 760px) {
+    .resume-page {
+      padding: 16px 8px 48px;
+    }
+
+    .resume-sheet {
+      padding: 20px 18px;
+    }
+
+    .resume-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .resume-overview {
+      column-count: 1;
+    }
+
+    .resume-name {
+      font-size: 22px;
+    }
+  }
+
+  /* Print */
+  @media print {
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    .resume-page {
+      padding: 0;
+      background: #fff;
+      min-height: auto;
+    }
+
+    .resume-sheet {
+      max-width: 100%;
+      margin: 0;
+      box-shadow: none;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .resume-actions {
+      display: none;
+    }
+
+    /* Force colored chips/accents to render in print */
+    .resume-exp-field,
+    .resume-soft-list li,
+    .resume-exp-tech-chip,
+    .resume-exp-skill-chip,
+    .resume-exp-subtitle,
+    .resume-section-title,
+    .resume-tech-label,
+    .resume-exp-position,
+    .resume-title,
+    .resume-header,
+    .resume-contact svg,
+    .resume-exp-features li::before,
+    .resume-highlight-metric,
+    .resume-avatar {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .resume-experience-item {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("print-btn");
+  btn?.addEventListener("click", () => window.print());
+</script>
