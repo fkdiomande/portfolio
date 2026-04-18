@@ -30,7 +30,7 @@ import Layout from "@/layouts/Layout.astro";
 
 const profile = {
   name: "Franck DIOMANDE",
-  title: "Fullstack Web Developer",
+  title: "Lead Full-Stack Web Developer",
   yearsOfExperience: "14+ years",
   summary:
     "Fullstack engineer with 14+ years building production-grade web applications end-to-end. I design, ship, and lead — combining strong front-end craft, resilient back-end architecture, and modern AI/agentic systems. Comfortable owning the stack from React UIs to cloud infrastructure on AWS, and equally at home shaping product direction with stakeholders or mentoring engineers in code review.",
@@ -1635,6 +1635,23 @@ const experiences = [
   const label = downloadBtn?.querySelector("[data-download-label]");
   const defaultLabel = label?.textContent ?? "Download PDF";
 
+  const waitForImages = async (root: HTMLElement) => {
+    const images = Array.from(root.querySelectorAll("img"));
+    await Promise.all(
+      images.map((img) => {
+        img.loading = "eager";
+        if (img.complete && img.naturalWidth > 0) {
+          return img.decode().catch(() => undefined);
+        }
+        return new Promise<void>((resolve) => {
+          const done = () => resolve();
+          img.addEventListener("load", done, { once: true });
+          img.addEventListener("error", done, { once: true });
+        }).then(() => img.decode().catch(() => undefined));
+      }),
+    );
+  };
+
   downloadBtn?.addEventListener("click", async () => {
     const sheet = document.querySelector<HTMLElement>(".resume-sheet");
     if (!sheet) return;
@@ -1646,6 +1663,8 @@ const experiences = [
     sheet.style.padding = "6mm 8mm";
 
     try {
+      await waitForImages(sheet);
+
       const canvas = await html2canvas(sheet, {
         scale: 3,
         useCORS: true,
