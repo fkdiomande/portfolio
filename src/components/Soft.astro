@@ -1,12 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import figmaIcon from "@/assets/tech/expertise/figma.svg";
+import jiraIcon from "@/assets/tech/expertise/jira.svg";
+import linearIcon from "@/assets/tech/expertise/linear.svg";
+import notionIcon from "@/assets/tech/expertise/notion.svg";
+import sketchIcon from "@/assets/tech/expertise/sketch.svg";
 import H2 from "@/components/ui/typography/H2.astro";
 import Muted from "@/components/ui/typography/Muted.astro";
-import figmaIcon from "@/assets/tech/expertise/figma.svg";
-import sketchIcon from "@/assets/tech/expertise/sketch.svg";
-import jiraIcon from "@/assets/tech/expertise/jira.svg";
-import notionIcon from "@/assets/tech/expertise/notion.svg";
-import linearIcon from "@/assets/tech/expertise/linear.svg";
+
 const description =
   "I am a dedicated professional known for my proficiency in a diverse array of tools such as Figma, Sketch, Jira, Notion, and Linear. Beyond technical expertise, my strength lies in my soft skills, which significantly impact my work:";
 
@@ -64,7 +65,7 @@ const tools = [
     </div>
 
     <!-- Checklist cards -->
-    <div class="flex flex-col gap-4 max-w-3xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
       {skills.map((skill, i) => (
         <div
           class="flex items-start gap-4 py-5 px-6 bg-card text-card-foreground rounded-[var(--radius)] shadow-[0_0_0_0.4px_var(--color-card-ring)] transition-all duration-300 animate-[soft-fade-in_0.5s_ease-out_both] hover:shadow-[0_0_0_0.4px_var(--color-ring-alt)] hover:-translate-y-0.5 max-sm:py-4 max-sm:px-5"

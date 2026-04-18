@@ -31,9 +31,9 @@ import terraformIcon from "@/assets/tech/expertise/terraform.svg";
 import typescriptIcon from "@/assets/tech/expertise/typescript.svg";
 import Avatar from "@/components/ui/avatar/Avatar.astro";
 import AvatarImage from "@/components/ui/avatar/AvatarImage.astro";
-import Badge from "@/components/ui/badge/Badge.astro";
 import Button from "@/components/ui/button/Button.astro";
 import Card from "@/components/ui/card/Card.astro";
+import Chip from "@/components/ui/chip/Chip.astro";
 import H1 from "@/components/ui/typography/H1.astro";
 import Large from "@/components/ui/typography/Large.astro";
 import Lead from "@/components/ui/typography/Lead.astro";
@@ -260,7 +260,7 @@ const socials = [
                 <div class:list={["experience-logo flex h-7 items-center shrink-0", logoClass]}>
                   <Image src={logo} alt={name} class="h-full w-auto max-w-30 object-contain object-left" />
                 </div>
-                <Badge variant="secondary">{field}</Badge>
+                <Chip>{field}</Chip>
               </div>
               <div class="flex flex-col gap-1">
                 <h3 class="text-sm font-semibold leading-tight">{name}</h3>
